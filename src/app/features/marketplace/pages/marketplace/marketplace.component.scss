@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
+  width: 100%;
+}
+
+.app-marketplace {
+  width: 100%;
+  padding: 40px 32px;
+  background: radial-gradient(90.16% 143.01% at 15.32% 21.04%, rgba(165, 239, 255, 0.05) 0%, rgba(110, 191, 244, 0.0111979) 77.08%, rgba(70, 144, 213, 0) 100%);
+  backdrop-filter: blur(30px);
+}
