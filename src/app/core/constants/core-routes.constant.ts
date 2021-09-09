@@ -9,6 +9,7 @@ export enum CORE_ROUTE_NAMES {
   BLANK = '',
   AUTH = 'auth',
   MARKETPLACE = 'marketplace',
+  TICKETS = 'tickets',
   OTHER = '**',
   NOT_FOUND = '404'
 }
@@ -28,6 +29,9 @@ export const ROUTES: Routes = [
       }, {
         path: CORE_ROUTE_NAMES.MARKETPLACE,
         loadChildren: () => import('@app/features/marketplace/marketplace.module').then(m => m.MarketplaceModule)
+      }, {
+        path: CORE_ROUTE_NAMES.TICKETS,
+        loadChildren: () => import('@app/features/tickets/tickets.module').then(m => m.TicketsModule)
       }
     ]
   }, {

@@ -1,0 +1,48 @@
+.app-card {
+  width: 345px;
+  min-height: 400px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  cursor: pointer;
+  background-color: #30333E;
+  box-shadow: 0px 100px 81px rgba(0, 0, 0, 0.22), 0px 22.3363px 18.0924px rgba(0, 0, 0, 0.131144), 0px 6.6501px 5.38658px rgba(0, 0, 0, 0.0888564);
+  &__content {
+    padding: 16px;
+  }
+  &__img {
+    width: auto;
+    height: 270px;
+    margin: 8px 8px 0;
+    border-radius: 16px;
+  }
+  &__price {
+    margin-top: 16px;
+    padding: 8px;
+    display: inline-flex;
+    border: 2px solid #4777F6;
+    color: #4777F6;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+  &__title {
+    font-size: 14px;
+    color: #fff;
+  }
+  &__subtitle {
+    margin-top: 4px;
+    color: #898E9F;
+  }
+  &__currency {
+    margin-left: 4px;
+  }
+  &__new-label {
+    position: absolute; top: 16px; left: 16px;
+    padding: 4px 12px;
+    font-size: 12px;
+    border-radius: 4px;;
+    background-color: #5AA370;
+    color: #fff;
+  }
+}

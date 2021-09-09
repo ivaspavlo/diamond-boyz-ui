@@ -13,7 +13,7 @@ import { PAGES } from './pages';
 
 @NgModule({
   declarations: [
-    ...PAGES
+    PAGES
   ],
   imports: [
     CommonModule,

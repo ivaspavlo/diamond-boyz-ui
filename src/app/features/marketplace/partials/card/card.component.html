@@ -1,1 +1,12 @@
-<p>card works!</p>
+<div *ngIf="card" class="app-card">
+  <p class="app-card__new-label">New</p>
+  <img [src]="card.img" alt="Product card image" class="app-card__img">
+  <div class="app-card__content">
+    <h3 class="app-card__title">{{ card.title }}</h3>
+    <h5 class="app-card__subtitle">{{ card.subtitle }}</h5>
+    <p class="app-card__price">
+      <span>{{ card.price }}</span>
+      <span class="app-card__currency">{{ card.currency }}</span>
+    </p>
+  </div>
+</div>
