@@ -1,9 +1,22 @@
 <section class="app-marketplace">
   <header class="app-marketplace__header">
-    <p class="app-marketplace__title">All NFTs</p>
-    <p class="app-marketplace__qty">1,234 <span class="app-marketplace__results">results</span></p>
+    <p class="app-marketplace__title">All Categories</p>
+    <div class="d-none d-lg-flex justify-content-center flex-grow-1">
+      <ng-container *ngTemplateOutlet="panel"></ng-container>
+    </div>
+    <p class="app-marketplace__qty">10<span class="app-marketplace__results">results</span></p>
   </header>
+  <div class="d-flex d-lg-none justify-content-center flex-grow-1 pb-5 px-4">
+    <ng-container *ngTemplateOutlet="panel"></ng-container>
+  </div>
   <div class="app-marketplace__content">
-    <app-card *ngFor="let i of 10 | filler" class="app-marketplace__card"></app-card>
+    <router-outlet></router-outlet>
   </div>
 </section>
+
+<ng-template #panel>
+  <div class="panel">
+    <button routerLink="buynow" class="panel__ctrl" routerLinkActive="active">Buy Now</button>
+    <button class="panel__ctrl" routerLinkActive="active">Auction</button>
+  </div>
+</ng-template>

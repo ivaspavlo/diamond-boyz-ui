@@ -1,6 +1,13 @@
 <div *ngIf="card" class="app-card">
+
   <p class="app-card__new-label">New</p>
-  <img [src]="card.img" alt="Product card image" class="app-card__img">
+
+  <div class="app-card-img">
+    <figure class="app-card-img__figure">
+      <img [src]="card.img" alt="Product card image" class="app-card-img__src">
+    </figure>
+  </div>
+
   <div class="app-card__content">
     <h3 class="app-card__title">{{ card.title }}</h3>
     <h5 class="app-card__subtitle">{{ card.subtitle }}</h5>
@@ -9,4 +16,5 @@
       <span class="app-card__currency">{{ card.currency }}</span>
     </p>
   </div>
+
 </div>

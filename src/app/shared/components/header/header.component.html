@@ -5,18 +5,24 @@
     <p class="logo__title">Diamond Swap</p>
   </a>
 
-  <div class="d-flex align-items-center">
+  <div class="header-search">
+    <input type="text" class="header-search__input" placeholder="Search items, collections and accounts">
+    <i class="header-search__icon"></i>
+  </div>
+
+  <div class="header-controls">
     <button routerLink="marketplace" class="header-button" routerLinkActive="header-button--active">Marketplace</button>
-    <button routerLink="tickets" class="header-button" routerLinkActive="header-button--active">Ticket</button>
+    <button class="header-button" routerLinkActive="header-button--active">Tickets</button>
     <div class="wallet">
       <img src="/assets/img/avatar.svg" alt="User avatar" class="wallet__avatar">
       <div class="wallet__data">
         <p class="wallet__amount">12.00487</p>
         <p class="wallet__currency">DBZ</p>
       </div>
+      <div class="wallet-menu">
+        
+      </div>
     </div>
   </div>
-
-  
 
 </section>

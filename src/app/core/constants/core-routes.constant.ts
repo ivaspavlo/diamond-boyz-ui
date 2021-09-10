@@ -7,6 +7,7 @@ import { CoreComponent } from '../pages/core/core.component';
 
 export enum CORE_ROUTE_NAMES {
   BLANK = '',
+  MAIN = 'main',
   AUTH = 'auth',
   MARKETPLACE = 'marketplace',
   TICKETS = 'tickets',
@@ -25,7 +26,10 @@ export const ROUTES: Routes = [
       {
         path: CORE_ROUTE_NAMES.BLANK,
         pathMatch: 'full',
-        redirectTo: CORE_ROUTE_NAMES.MARKETPLACE
+        redirectTo: CORE_ROUTE_NAMES.MAIN
+      }, {
+        path: CORE_ROUTE_NAMES.MAIN,
+        loadChildren: () => import('@app/features/main/main.module').then(m => m.MainModule)
       }, {
         path: CORE_ROUTE_NAMES.MARKETPLACE,
         loadChildren: () => import('@app/features/marketplace/marketplace.module').then(m => m.MarketplaceModule)

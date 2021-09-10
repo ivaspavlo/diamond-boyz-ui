@@ -1,16 +1,27 @@
-@import 'mixins/breakpoints';
+@import 'mixins/_all';
 
 .app-header {
   height: 80px;
   padding: 0 32px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   background-color: #111520;
+  @media only screen and (max-width: map-get($breakpoints, "md")) {
+    padding: 0 16px;
+  }
+  @media only screen and (max-width: map-get($breakpoints, "lg")) {
+    padding: 0 24px;
+  }
 }
 
 .logo {
   display: flex;
   align-items: center;
+  min-width: 180px;
+  @media only screen and (max-width: map-get($breakpoints, "md")) {
+    min-width: 50px;
+  }
   &__img {
     height: 48px;
     width: 48px;
@@ -27,6 +38,37 @@
   }
 }
 
+.header-search {
+  max-width: 400px;
+  margin: 0 40px 0 60px;
+  display: flex;
+  flex-grow: 1;
+  position: relative;
+  &__input {
+    width: 100%;
+    height: 48px;
+    padding: 0 45px 0 16px;
+    border: 2px solid #434F5D;
+    border-radius: 8px;
+    color: #6F6B7E;
+    background: transparent;
+    display: flex;
+  }
+  &__icon {
+    @include bg();
+    position: absolute; right: 16px; top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    display: block;
+    background-image: url('/assets/img/icons/search.svg');
+    content: '';
+  }
+  @media only screen and (max-width: map-get($breakpoints, "lg")) {
+    display: none;
+  }
+}
+
 .header-button {
   height: 100%;
   font-size: 16px;
@@ -39,6 +81,10 @@
   cursor: pointer;
   position: relative;
   transition: .3s;
+  @media only screen and (max-width: map-get($breakpoints, "md")) {
+    font-size: 14px;
+    margin-left: 12px;
+  }
   &:before {
     opacity: 0;
     position: absolute; bottom: 0; left: 0;
@@ -58,17 +104,29 @@
   }
 }
 
+.header-controls {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
 .wallet {
-  height: 48px;
   margin-left: 36px;
   padding: 2px;
   border: 2px solid #434F5D;
   border-radius: 4px;
   display: flex;
   cursor: pointer;
+  @media only screen and (max-width: map-get($breakpoints, "md")) {
+    margin-left: 12px;
+  }
   &__avatar {
     width: 40px;
     height: 40px;
+    @media only screen and (max-width: map-get($breakpoints, "md")) {
+      width: 32px;
+      height: 32px;
+    }
   }
   &__data {
     display: flex;
