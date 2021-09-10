@@ -1,3 +1,9 @@
 <section class="app-marketplace">
-  <app-card></app-card>
+  <header class="app-marketplace__header">
+    <p class="app-marketplace__title">All NFTs</p>
+    <p class="app-marketplace__qty">1,234 <span class="app-marketplace__results">results</span></p>
+  </header>
+  <div class="app-marketplace__content">
+    <app-card *ngFor="let i of 10 | filler" class="app-marketplace__card"></app-card>
+  </div>
 </section>
