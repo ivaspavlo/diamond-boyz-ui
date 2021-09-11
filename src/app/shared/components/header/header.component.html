@@ -10,7 +10,7 @@
     <i class="header-search__icon"></i>
   </div>
 
-  <div class="header-controls">
+  <div (click)="userMenuVisible = !userMenuVisible" class="header-controls">
     <button routerLink="marketplace" class="header-button" routerLinkActive="header-button--active">Marketplace</button>
     <button class="header-button" routerLinkActive="header-button--active">Tickets</button>
     <div class="wallet">
@@ -19,8 +19,13 @@
         <p class="wallet__amount">12.00487</p>
         <p class="wallet__currency">DBZ</p>
       </div>
-      <div class="wallet-menu">
-        
+      <div *ngIf="userMenuVisible" class="user-menu">
+        <i class="triangle"></i>
+        <li *ngFor="let item of userMenuItems; let last = last; let first = first;" [ngClass]="{'is-last': last, 'is-first': first}" class="user-menu__item">
+          <a class="user-menu__link">
+            <span>{{ item.name | translate }}</span>
+          </a>
+        </li>
       </div>
     </div>
   </div>

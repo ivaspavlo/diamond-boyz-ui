@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { UserMenuItems } from './constants';
 
 
 @Component({
@@ -8,6 +9,9 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent implements OnInit {
+
+  public userMenuItems = UserMenuItems;
+  public userMenuVisible = false;
 
   constructor( ) { }
 
