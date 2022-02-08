@@ -1,0 +1,11 @@
+<div class="app-toast">
+  <i class="app-toast__bar" [ngClass]="data.state"></i>
+  <figure class="app-toast__main-icon" [ngClass]="data.state">
+    <img src="/assets/img/icons/close-x-circle.svg" alt="Toast State">
+  </figure>
+  <div class="d-flex flex-column">
+    <header class="app-toast__header">{{ data.header }}</header>
+    <p class="app-toast__text">{{ data.text }}</p>
+  </div>
+  <i (click)="toasterService.hide()" class="app-toast__close"></i>
+</div>

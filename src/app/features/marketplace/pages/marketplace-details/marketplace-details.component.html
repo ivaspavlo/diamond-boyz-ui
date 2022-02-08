@@ -1,0 +1,99 @@
+<div *ngIf="marketplace$ | async as marketplace; else loading" class="ticket-details">
+
+  <app-breadcrumbs
+    [routerLinks]="[backPrevPage]"
+    [parentTitle]="parentTitle"
+    [title]="(event$ | async)?.title"
+  ></app-breadcrumbs>
+
+  <div class="container-fluid">
+    <div class="row flex-lg-row-reverse">
+      <div class="sale-block col-12 col-lg-8">
+
+        <h1>{{marketplace?.attrs?.title}}</h1>
+
+        <div class="seller">
+          <img src="/assets/img/avatar.png" alt="">
+
+          <span class="seller__label">Seller:</span>
+
+          <div class="seller__wallet">
+            <app-copy-to-clipboard
+              [walletAddress]="marketplace?.owner_wallet || ''"
+            ></app-copy-to-clipboard>
+          </div>
+
+        </div>
+
+        <ng-container [ngSwitch]="marketplace.marketplace?.status">
+          <!--TODO auction flow  *ngSwitchCase="SellType.FIXED_SALE_TYPE" -->
+
+          <app-marketplace-buy-now
+            *ngSwitchCase="SellType.FIXED_PRICE_SALE"
+            [marketplace]="marketplace"
+            [event]="event$ | async"
+            (refresh)="store.loadSingleMarketplace(this.id)"
+          ></app-marketplace-buy-now>
+        </ng-container>
+
+        <app-vip-map class="vip-map" *ngIf="marketplace.object_type === 'ticket' && marketplace.attrs?.vip_general === 'VIP'"></app-vip-map>
+
+        <app-event-info [event]="event$ | async"></app-event-info>
+
+      </div>
+
+      <div class="details col-12 col-lg-4">
+        <ng-container *ngIf="marketplace">
+
+          <figure>
+            <img [img-preloader]="marketplace.thumbnail_mobile" alt="Card Image" class="w-100 d-flex d-md-none">
+            <img [img-preloader]="marketplace.thumbnail_desktop" alt="Card Image" class="w-100 d-none d-md-flex">
+          </figure>
+
+          <div class="card token-details" *ngIf="marketplace.attrs?.description">
+            <div class="tabs">
+              <span class="tabs__item" [class.current-tab]="view === TOKEN_DETAILS.DESCRIPTION" (click)="view = TOKEN_DETAILS.DESCRIPTION">Description</span>
+              <span class="tabs__item" [class.current-tab]="view === TOKEN_DETAILS.DETAILS" (click)="view = TOKEN_DETAILS.DETAILS">Use Case</span>
+            </div>
+
+            <ng-container *ngIf="view === TOKEN_DETAILS.DESCRIPTION">
+              <h3 *ngIf="marketplace.attrs.name">{{marketplace.attrs?.name}}</h3>
+              {{marketplace.attrs?.description}}
+            </ng-container>
+
+            <ng-container *ngIf="view === TOKEN_DETAILS.DETAILS">
+              <ul>
+                <li>
+                  <span>Contract Address:</span>
+                  <app-copy-to-clipboard
+                    [walletAddress]="contractAddress"
+                  ></app-copy-to-clipboard>
+                </li>
+
+                <li>
+                  <span>Token ID:</span>
+                  <span>{{marketplace.token_id}}</span>
+                </li>
+
+                <li>
+                  <span>Token Standard:</span>
+                  <span>ERC-721</span>
+                </li>
+              </ul>
+            </ng-container>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<app-footer></app-footer>
+
+<ng-template #loading>
+  <div class="spinner-container">
+    <app-spinner></app-spinner>
+  </div>
+</ng-template>
+

@@ -1,0 +1,16 @@
+<div *ngIf="marketplace?.marketplace?.nft_sale" class="card auction-details">
+  <h6>Current price</h6>
+  <div class="subtitle">
+    <h2>DBZ: {{marketplace?.marketplace?.nft_sale?.price?.dbz}}</h2>
+    <!--TODO Add price_usd when it be ready at the backend part-->
+    <h4 *ngIf="marketplace?.marketplace?.nft_sale?.price?.usd">$ {{marketplace?.marketplace?.nft_sale?.price?.usd}}</h4>
+  </div>
+
+  <ng-container *ngIf="marketplace?.marketplace?.nft_sale?.status !== eNtfSaleStatus.FINISHED">
+
+    <div class="text-center" *ngIf="marketplace?.marketplace?.market_contract_item_id !== null">
+      <button type="button" [disabled]="marketplace?.token_id === null" (click)="buyNow()">Buy now</button>
+    </div>
+  </ng-container>
+</div>
+

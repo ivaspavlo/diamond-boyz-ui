@@ -1,0 +1,34 @@
+<table class="offers-table">
+  <thead class="offers-table__header">
+    <tr>
+      <th class="offers-table__header-cell">#</th>
+      <th class="offers-table__header-cell">From:</th>
+      <th class="offers-table__header-cell">Price:</th>
+      <th class="offers-table__header-cell">USD Price:</th>
+      <th class="offers-table__header-cell">Date:</th>
+    </tr>
+  </thead>
+
+  <tbody *ngIf="offers && offers.length; else empty">
+    <tr *ngFor="let offer of offers; let i = index;">
+      <td class="offers-table__data-cell">{{i+1}}</td>
+      <td class="offers-table__data-cell"></td>
+      <td class="offers-table__data-cell">{{offer.bid}} DBZ</td>
+      <td class="offers-table__data-cell"></td>
+      <td class="offers-table__data-cell">{{offer.created_date | date:'d MMMM y | HH:mm'}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #empty>
+  <tbody>
+    <tr>
+      <td colspan="5">
+        <figure class="offers-table__empty">
+          <img src="/assets/img/zoom.png" alt="Zoom Image">
+          <figcaption>No offers yet</figcaption>
+        </figure>
+      </td>
+    </tr>
+  </tbody>
+</ng-template>

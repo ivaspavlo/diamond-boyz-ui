@@ -1,0 +1,15 @@
+<div *ngIf="card" class="app-card">
+
+  <div class="app-card-img">
+    <figure class="app-card-img__figure">
+      <img [img-preloader]="card.thumbnail_mobile" alt="Card Image" class="w-100 d-flex d-md-none">
+      <img [img-preloader]="card.thumbnail_desktop" alt="Card Image" class="w-100 d-none d-md-flex">
+    </figure>
+  </div>
+
+  <div class="app-card__content">
+    <!-- TODO: change after metadata will be changed -->
+    <h3 class="app-card__title">{{ card?.attrs?.title}}</h3>
+  </div>
+
+</div>

@@ -1,0 +1,28 @@
+<div *ngIf="ticket" class="ticket-card" [routerLink]="['./buy', ticket.id]">
+
+  <p class="ticket-card__is-vip" *ngIf="ticket.zone_label">{{ticket.zone_label}}</p>
+
+  <div class="ticket-card-img">
+    <figure class="ticket-card-img__figure">
+      <img [img-preloader]="ticket.thumbnail_mobile" alt="Ticket Image" class="w-100 d-flex d-md-none">
+      <img [img-preloader]="ticket.thumbnail_desktop" alt="Ticket Image" class="w-100 d-none d-md-flex">
+    </figure>
+  </div>
+
+  <div class="ticket-card__content">
+    <h3 class="ticket-card__title">{{ ticket.title }}</h3>
+
+    <div class="d-flex justify-content-between align-items-center">
+      <p class="ticket-card__price">
+        <!-- TODO: recheck if correct -->
+        <i *ngIf="ticket.sell_type === SellType.FIXED_PRICE" class="ticket-card__price-hot"></i>
+        <span>{{ ticket.price }} </span>
+        <span class="ticket-card__currency">DBZ</span>
+      </p>
+      <p *ngIf="daysLeft" class="d-flex">
+        <i class="ticket-card__clock-icon"></i>
+        <span class="ticket-card__days-left">{{ daysLeft }} {{ daysLeft > 1 ? 'days left' : 'day left' }}</span>
+      </p>
+    </div>
+  </div>
+</div>

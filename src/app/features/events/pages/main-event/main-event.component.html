@@ -1,0 +1,100 @@
+<section class="app-main-event">
+
+  <div class="app-main-event__container" *ngIf="(mainEvent$ | async) as mainEvent else spinner">
+
+    <figure class="event-desktop">
+      <!-- TODO: hardcoded, adjust API, because the image is getting cut incorrectly -->
+      <img src="/assets/img/bg-hardcode.png" alt="Event Desktop Background" class="event-desktop__bg">
+    </figure>
+
+    <div class="event-mobile">
+
+      <!-- TODO: hardcoded, adjust API -->
+      <img src="/assets/img/main-event-bg-mobile.png" alt="Event Mobile Background" class="event-mobile__bg">
+
+      <!-- TODO: move slider markup and logic to a shared module -->
+      <swiper [config]="config" class="h-100">
+        <ng-template swiperSlide>
+          <figure class="event-mobile__slide">
+            <!-- TODO: slides hardcoded, adjust API -->
+            <img src="/assets/img/slide-1.png" alt="Slide #1">
+            <figcaption class="event-mobile__artist">Johnny Dang</figcaption>
+          </figure>
+        </ng-template>
+        <ng-template swiperSlide>
+          <figure class="event-mobile__slide">
+            <img src="/assets/img/slide-2.png" alt="Slide #2">
+          </figure>
+        </ng-template>
+        <ng-template swiperSlide>
+          <figure class="event-mobile__slide">
+            <img src="/assets/img/slide-3.png" alt="Slide #3">
+          </figure>
+        </ng-template>
+        <ng-template swiperSlide>
+          <figure class="event-mobile__slide">
+            <img src="/assets/img/slide-4.png" alt="Slide #4">
+          </figure>
+        </ng-template>
+        <ng-template swiperSlide>
+          <figure class="event-mobile__slide">
+            <img src="/assets/img/slide-5.png" alt="Slide #5">
+          </figure>
+        </ng-template>
+        <ng-template swiperSlide>
+          <figure class="event-mobile__slide">
+            <img src="/assets/img/slide-6.png" alt="Slide #6">
+          </figure>
+        </ng-template>
+      </swiper>
+
+    </div>
+
+    <div class="event-data">
+
+      <ng-container *ngIf="(mainEvent.start_date | eventDate) as eventDate">
+        <div class="event-data__block">
+          <span>{{ eventDate.month }} {{ eventDate.dayNum }}</span>
+          <span>DATE</span>
+        </div>
+
+        <div class="event-data__block">
+          <span>{{ eventDate.time }}</span>
+          <span>START</span>
+        </div>
+      </ng-container>
+
+      <div class="event-data__block">
+        <span>{{ mainEvent.place_address }}</span>
+        <span>CITY</span>
+      </div>
+
+      <div class="event-data__block">
+        <span>{{ mainEvent.place_title }}</span>
+        <span>VENUE</span>
+      </div>
+
+    </div>
+
+    <div class="main-event-info">
+      <p class="main-event-info__title">{{ mainEvent.title }}</p>
+      <!-- TODO: currently subtitle is hardcoded, API needs to be adjusted -->
+      <p class="main-event-info__subtitle">World's 1st Live NFT Experience</p>
+      <p class="main-event-info__text">{{ mainEvent.description }}</p>
+      <div class="main-event-info__controls">
+        <button routerLink="{{mainEvent.id}}" class="main-event-button main-event-button--left">Buy Ticket</button>
+        <button disabled class="main-event-button main-event-button--right">Buy Merch</button>
+      </div>
+    </div>
+
+  </div>
+
+  <app-footer></app-footer>
+
+</section>
+
+<ng-template #spinner>
+  <div class="app-main-event__spinner">
+    <app-spinner></app-spinner>
+  </div>
+</ng-template>

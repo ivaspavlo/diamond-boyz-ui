@@ -1,0 +1,55 @@
+image:
+  name: node:14.15.4
+definitions:
+  services:
+    docker:
+      memory: 2048
+  steps:
+    - step: &build-push-deploy
+        caches:
+          - node
+        script:
+          - npm install
+          - npm run build:$ENV
+          - curl -O https://bootstrap.pypa.io/pip/2.7/get-pip.py
+          - python get-pip.py --user
+          - /root/.local/bin/pip install awscli
+          - aws configure set aws_access_key_id "${AWS_ACCESS_KEY_ID}"
+          - aws configure set aws_secret_access_key "${AWS_SECRET_ACCESS_KEY}"
+
+          - wget https://releases.hashicorp.com/terraform/0.15.5/terraform_0.15.5_linux_amd64.zip
+          - unzip terraform_0.15.5_linux_amd64.zip -d /usr/local/bin
+          - cd ${BITBUCKET_CLONE_DIR}/terraform
+          - terraform init  -backend-config  "bucket=am-wallet-$ENV-terraform-remote-state"
+          - terraform workspace select $ENV
+          - terraform validate
+          - terraform plan
+          - terraform apply -input=false -auto-approve
+
+          - aws s3 sync ${BITBUCKET_CLONE_DIR}/dist/am-wallet/ s3://${FRONTEND_DOMAIN}/
+          - export DISTR_ID=`terraform output -raw distribution_id`
+          - aws cloudfront create-invalidation --distribution-id $DISTR_ID --paths '/*'
+
+        services:
+          - docker
+options:
+  docker: true
+  size: 2x
+pipelines:
+  branches:
+    terraform_pipeline:
+      - step:
+          <<: *build-push-deploy
+          deployment: pipeline_creation
+    develop:
+      - step:
+          <<: *build-push-deploy
+          deployment: pipeline_creation
+    production:
+      - step:
+          <<: *build-push-deploy
+          deployment: Production
+    master:
+      - step:
+          <<: *build-push-deploy
+          deployment: Production

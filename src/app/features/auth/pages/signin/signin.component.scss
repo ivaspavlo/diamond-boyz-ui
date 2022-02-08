@@ -1,0 +1,115 @@
+@import 'mixins/_all';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.signin {
+  @include bg;
+  background-image: url('/assets/img/signin-bg.png');
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #121621;
+  @media only screen and (min-width: map-get($breakpoints, "sm")) { padding: 64px; }
+  &__content {
+    max-width: 742px;
+    min-height: 599px;
+    border-radius: 32px;
+    padding: 64px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #30333E;
+    box-shadow: 0px 100px 86px rgba(0, 0, 0, 0.13), 0px 22.3363px 19.2092px rgba(0, 0, 0, 0.0774939), 0px 6.6501px 5.71909px rgba(0, 0, 0, 0.0525061);
+  }
+  &__metamask-logo {
+    width: 135px;
+    height: 120px;
+    display: flex;
+    img { width: 100%; }
+  }
+  &__title {
+    max-width: 582px;
+    font-size: 64px;
+    line-height: 74px;
+    margin: 40px 0 24px;
+    font-weight: 400;
+    font-family: 'Anton';
+    color: #fff;
+    text-align: center;
+    @media only screen and (max-width: map-get($breakpoints, "md")) {
+      font-size: 50px;
+    }
+  }
+  &__subtitle {
+    max-width: 582px;
+    font-size: 16px;
+    line-height: 26px;
+    color: #A4A5A8;
+    font-weight: 400;
+    text-align: center;
+  }
+  &__button {
+    width: 160px;
+    height: 48px;
+    margin: 40px 0;
+    border: 0;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #4777F6;
+    cursor: pointer;
+    &:hover {
+      background-color: #6A93FF;
+    }
+  }
+  &__warn {
+    width: 100%;
+    padding: 16px;
+    display: flex;
+    background-color: #494C59;
+    border-radius: 16px;
+    @media only screen and (max-width: map-get($breakpoints, "md")) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  &__warn-icon {
+    @include bg;
+    background-image: url('/assets/img/signin-warn.png');
+    width: 48px;
+    height: 48px;
+    margin: 0 16px 0 0;
+    display: flex;
+    @media only screen and (max-width: map-get($breakpoints, "md")) {
+      margin: 0 0 16px 0;
+    }
+  }
+  &__warn-header {
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 8px;
+    @media only screen and (max-width: map-get($breakpoints, "md")) {
+      text-align: center;
+    }
+  }
+  &__warn-text {
+    color: #fff;
+    font-size: 12px;
+    @media only screen and (max-width: map-get($breakpoints, "md")) {
+      text-align: center;
+    }
+  }
+  &__link {
+    color: #4777F6;
+    &:hover {
+      color: #6A93FF;
+    }
+  }
+}

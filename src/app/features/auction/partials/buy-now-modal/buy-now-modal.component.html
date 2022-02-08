@@ -1,0 +1,47 @@
+<div class="modal">
+  <div class="modal-header">
+    <span class="modal-close" (click)="close()"></span>
+  </div>
+  <div class="modal-content">
+    <h3>Buy Now</h3>
+<!--    <h6>Buy one or several NTFs at once</h6>-->
+    <div class="modal-ticket-block" *ngIf="data">
+      <img [src]="data.image" [alt]="data.title">
+      <div class="d-flex flex-column justify-content-between">
+        <div>
+          <h2>{{data.title}}</h2>
+        </div>
+
+        <div class="modal-ticket-price">
+          <app-currency-select class="currency-select"></app-currency-select>
+          <div class="price">DBZ: {{data.price}} <small *ngIf="data.price_usd">$ {{data.price_usd}}</small></div>
+        </div>
+      </div>
+    </div>
+
+    <label class="terms">
+      <input type="checkbox" #terms (change)="true">
+      <!-- TODO: terms link -->
+      <!-- TODO: terms checkbox -->
+      By checking this box, I agree to <a href="#" target="_blank" rel="noopener noreferrer">Terms of Service</a>
+    </label>
+
+    <div *ngIf="isLoading$ | async" class="button-block warn-text text-center">
+      Please wait while we’re processing the transaction.<br>
+      This may take up to a minute.
+    </div>
+
+    <div class="button-block text-center">
+      <button
+        type="button"
+        class="btn"
+        [disabled]="!terms.checked || (isLoading$ | async)"
+        (click)="buy()"
+      >
+        <ng-container *ngIf="isLoading$ | async else btnText">Processing...</ng-container>
+        <ng-template #btnText>Buy now</ng-template>
+      </button>
+    </div>
+  </div>
+  <div class="modal-footer"></div>
+</div>

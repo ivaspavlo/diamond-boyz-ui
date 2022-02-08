@@ -1,0 +1,23 @@
+<div class="card auction-details" *ngIf="auction$ | async as auction">
+  
+  <h6>Start price | Minimum Bid {{auction.min_bid}} DBZ</h6>
+  <div class="subtitle">
+    <h2>DBZ: {{auction.start_price}}</h2>
+    <!-- TODO: fiat calculation -->
+    <h4>$ 38,9966</h4>
+  </div>
+
+  <app-auction-timer [startDate]="auction.created" [endDate]="auction.finished_date"></app-auction-timer>
+
+  <div class="text-center">
+    <button type="button" (click)="placeBid()">Place bid</button>
+  </div>
+
+</div>
+
+<div class="card auction-details__offers">
+  <h3>Offers</h3>
+  <div class="auction-details__offers-table">
+    <app-auction-offers [offers]="offers$ | async"></app-auction-offers>
+  </div>
+</div>

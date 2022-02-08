@@ -1,0 +1,30 @@
+@import 'mixins/_all';
+@import 'colors';
+
+.copy-icon {
+  @include bg;
+  background-image: url('/assets/img/icons/copy.svg');
+  width: 24px;
+  height: 24px;
+  display: flex;
+  cursor: pointer;
+  &:hover {
+    opacity: .5;
+  }
+}
+.check-icon {
+  @include bg;
+  background-image: url('/assets/img/icons/checked-white.svg');
+  height: 24px;
+  width: 24px;
+  display: flex;
+}
+.wallet-address {
+  color: $white;
+  margin: 0 3px 0 0;
+}
+.copy-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

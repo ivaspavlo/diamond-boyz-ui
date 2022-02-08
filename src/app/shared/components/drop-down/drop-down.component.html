@@ -1,0 +1,18 @@
+
+<div [ngClass]="size" class="dd">
+
+  <button #trigger (click)="onShowList()" [disabled]="disabled" [ngClass]="type" [ngClass]="{'active': showList}" class="dd__btn">
+    <span *ngIf="title" class="dd__text">{{ title | translate }}</span>
+    <i class="dd__arrow"></i>
+  </button>
+
+  <div #listOverlay (click)="onHideList()" class="dd__list-overlay">
+    <ul #list [style]="listStyle" class="dd__list">
+      <li *ngFor="let item of innerItems; let index = index;" (click)="onListItemClick($event, index)" class="dd__item">
+        <span class="dd__text">{{ item.name | translate }}</span>
+        <span *ngIf="item.extra">{{ item.extra | translate }}</span>
+      </li>
+    </ul>
+  </div>
+
+</div>

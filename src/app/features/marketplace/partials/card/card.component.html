@@ -1,0 +1,32 @@
+<div *ngIf="card" class="app-card" routerLink="/marketplace/{{card.nft_id}}">
+
+<!--Show if an item was created less than 7 days ago -->
+  <p *ngIf="card.new" class="app-card__new-label">New</p>
+
+  <div class="app-card-img">
+    <div class="app-card-img__figure">
+      <figure>
+        <img [img-preloader]="card.thumbnail_mobile" alt="Card Image" class="w-100 d-flex d-md-none">
+        <img [img-preloader]="card.thumbnail_desktop" alt="Card Image" class="w-100 d-none d-md-flex">
+      </figure>
+    </div>
+  </div>
+
+  <div class="app-card__content">
+    <h3 class="app-card__title">{{ card?.attrs?.title }}</h3>
+    <h5 class="app-card__subtitle">{{ card?.attrs?.description }}</h5>
+    <div class="app-card__price-container">
+      <p class="app-card__price">
+        <span>{{ card.price | number }}</span>
+        <span class="app-card__currency">DBZ</span>
+      </p>
+      <div *ngIf="card.days_left" class="app-card__days-left">
+        <p>⏰ {{card.days_left}} </p>
+        <p *ngIf="card.days_left === 1; else days">day</p>
+        <ng-template #days><p>days</p></ng-template>
+        <p>left</p>
+      </div>
+    </div>
+  </div>
+
+</div>

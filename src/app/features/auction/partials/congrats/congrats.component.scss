@@ -1,0 +1,92 @@
+@import 'mixins/_all';
+
+.congrats {
+  max-width: 547px;
+  min-height: 365px;
+  padding: 40px 20px;
+  background-color: #30333E;
+  border-radius: 32px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  @media only screen and (min-width: map-get($breakpoints, "sm")) { padding: 40px 65px; }
+  @media only screen and (min-width: map-get($breakpoints, "md")) { min-width: 547px; }
+  &__title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 41px;
+    p {
+      font-size: 34px;
+      line-height: 41px;
+    }
+  }
+  &__subtitle {
+    margin: 16px 0 32px;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    color: #A4A5A8;
+  }
+  &__button {
+    width: 100%;
+    max-width: 240px;
+    height: 48px;
+    margin-top: 24px;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #4777F6;
+    border: 0;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover { background-color: #6A93FF; }
+  }
+  &__checked {
+    @include bg;
+    background-image: url('/assets/img/icons/checked-green.svg');
+    min-width: 24px;
+    height: 24px;
+    margin-right: 8px;
+  }
+  &__arrow-right {
+    @include arrow('right', 'primary');
+    margin-right: 14px;
+  }
+}
+
+.congrats-content {
+  width: 100%;
+  border: 1px solid #434F5D;
+  border-radius: 16px;
+  color: #fff;
+  overflow: hidden;
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+  }
+  &__header {
+    padding: 12px;
+    border-bottom: 1px solid #434F5D;
+    background-color: #262830;
+    font-weight: 600;
+    font-size: 12px;
+    display: flex;
+  }
+  &__status {
+    padding: 12px;
+    border-bottom: 1px solid #434F5D;
+    font-size: 14px;
+    display: flex;
+    @media only screen and (max-width: map-get($breakpoints, "sm")) { flex-direction: column }
+    .txn-hash {
+      cursor: pointer;
+      @media only screen and (max-width: map-get($breakpoints, "sm")) { padding: 10px 0 0 }
+    }
+  }
+}
+

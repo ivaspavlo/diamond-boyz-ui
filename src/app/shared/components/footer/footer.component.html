@@ -1,0 +1,39 @@
+<footer class="app-footer">
+  <div class="app-footer__wrap">
+    <a class="app-footer__logo">
+      <img class="app-footer__logo-img" src="/assets/img/logo.png" alt="Logo">
+      <p class="app-footer__logo-title">Diamond Swap</p>
+    </a>
+    <div class="d-flex flex-column flex-lg-row">
+      <div class="app-footer__menu">
+        <ul *ngFor="let item of footerMenuItems" class="app-footer__menu-col">
+          <li class="app-footer__menu-header">{{ item.title }}</li>
+          <li *ngFor="let btn of item.buttons" class="app-footer__menu-link">
+            <a [routerLink]="btn.href" *ngIf="btn?.type === 'internal'">{{ btn.name }}</a>
+            <a [href]="btn.href" *ngIf="btn?.type === 'external'">{{ btn.name }}</a>
+          </li>
+        </ul>
+      </div>
+      <!--<div class="app-footer__main">
+        <div class="app-footer__content">
+          <div class="d-flex flex-column">
+            <h4 class="app-footer__menu-header">Download Apps</h4>
+            <p class="app-footer__first-text">
+              1. For purposes of this disclaimer, "dbzcoin.com" will represent https://dbzcoin.com and all related entities that are associated with dbzcoin.com<br>
+              2. EACH USER ACKNOWLEDGES AND IS AWARE THAT THE RISK OF LOSS IN TRADING OR HOLDING CRYPTOCURRENCIES, TOKENS OR ANY CRYPTO ASSETS CAN BE SUBSTANTIAL.
+            </p>
+            <div class="d-flex justify-content-center justify-content-md-start">
+              <a *ngFor="let icon of socialIcons" target="_blank" [href]="icon.href" [ngClass]="icon.name" class="social-icon"></a>
+            </div>
+          </div>
+        </div>
+      </div>-->
+    </div>
+    <div style="padding-top: 20px" class="d-flex justify-content-center justify-content-md-start">
+      <a *ngFor="let icon of socialIcons" target="_blank" [href]="icon.href" [ngClass]="icon.name" class="social-icon"></a>
+    </div>
+  </div>
+  <div class="app-footer__bottom">
+    <p class="app-footer__bottom-text">All rights reserved. &#169; 2021</p>
+  </div>
+</footer>

@@ -1,0 +1,27 @@
+<form [formGroup]="form" class="auction">
+
+  <i mat-dialog-close class="auction__close"></i>
+
+  <header class="w-100 d-flex flex-column">
+    <h4 class="auction__title">Place a bid</h4>
+    <p class="auction__subtitle">Place your Bid for this NFT</p>
+  </header>
+
+  <div class="bid-bar">
+    <div class="bid-bar__header">
+      <p class="bid-bar__price">Price</p>
+      <p class="bid-bar__balance">Your Balance: 121,5500 DBZ</p>
+    </div>
+    <div class="bid-bar__content">
+      <app-currency-select formControlName="currency" [items]="currencyList"></app-currency-select>
+      <input placeholder="Set your Bid" type="number" formControlName="bid" class="bid-bar__input">
+      <p class="bid-bar__currency">
+        <span class="bid-bar__currency--sign">$</span>
+        <span>33,2844</span>
+      </p>
+    </div>
+  </div>
+
+  <button (click)="onPlaceBid()" [disabled]="!form.valid" class="auction__button">Place Bid</button>
+
+</form>

@@ -1,0 +1,5 @@
+<div (click)="onCopyToClipboard()" [cdkCopyToClipboard]="walletAddress" class="copy-wrap">
+  <p class="wallet-address">{{walletAddress | ellipsis:'6:6'}}</p>
+  <i *ngIf="!showCheckMark"  class="copy-icon" ></i>
+  <i *ngIf="showCheckMark" class="check-icon"></i>
+</div>

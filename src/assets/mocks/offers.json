@@ -1,0 +1,36 @@
+[{
+  "auction_id": "1",
+  "bid": "0.5",
+  "expiration_date": "2021-09-13T18:03:50.503Z",
+  "created_date": "2021-09-11T18:07:50.503Z",
+  "user_id": "5",
+  "status": "active"
+}, {
+  "auction_id": "1",
+  "bid": "0.4",
+  "expiration_date": "2021-09-13T18:03:50.503Z",
+  "created_date": "2021-09-11T18:06:50.503Z",
+  "user_id": "4",
+  "status": "active"
+}, {
+  "auction_id": "1",
+  "bid": "0.3",
+  "expiration_date": "2021-09-13T18:03:50.503Z",
+  "created_date": "2021-09-11T18:05:50.503Z",
+  "user_id": "3",
+  "status": "active"
+}, {
+  "auction_id": "1",
+  "bid": "0.2",
+  "expiration_date": "2021-09-13T18:03:50.503Z",
+  "created_date": "2021-09-11T18:04:50.503Z",
+  "user_id": "2",
+  "status": "active"
+}, {
+  "auction_id": "1",
+  "bid": "0.1",
+  "expiration_date": "2021-09-13T18:03:50.503Z",
+  "created_date": "2021-09-11T18:03:50.503Z",
+  "user_id": "1",
+  "status": "active"
+}]

@@ -1,0 +1,33 @@
+<section class="app-marketplace">
+  <header class="app-marketplace__header">
+    <p class="app-marketplace__title">All Categories</p>
+    <div class="d-none d-lg-flex justify-content-center flex-grow-1">
+      <ng-container *ngTemplateOutlet="panel"></ng-container>
+    </div>
+    <p class="app-marketplace__qty">{{totalElements$ | async}}<span class="app-marketplace__results">results</span></p>
+  </header>
+  <div class="d-flex d-lg-none justify-content-center flex-grow-1 pb-5 px-4">
+    <ng-container *ngTemplateOutlet="panel"></ng-container>
+  </div>
+  <div class="app-marketplace__content">
+    <ng-container *ngIf="(totalElements$ | async) === 0 && (loading$ | async) === false">
+      <div class="noItems">
+        <img src="/assets/img/zoom-gray.png" alt="">
+        <b>There are no tickets yet</b>
+        <span>Tickets will be added soon</span>
+      </div>
+    </ng-container>
+    <div *ngIf="loading$ | async" class="spinner-container">
+      <app-spinner></app-spinner>
+    </div>
+  </div>
+</section>
+
+<ng-template #panel>
+  <div class="panel">
+    <button routerLink="/marketplace/buynow" class="panel__ctrl" routerLinkActive="active">Buy Now</button>
+    <button routerLink="/marketplace/auction" class="panel__ctrl" routerLinkActive="active">Auction</button>
+  </div>
+</ng-template>
+
+

@@ -1,0 +1,84 @@
+@import 'mixins/all';
+
+$success: #3CB371;
+$error: #FD0606;
+$info: #4777F6;
+
+::ng-deep {
+  .mat-snack-bar-container {
+    max-width: initial;
+    padding: 0;
+    box-shadow: none;
+    background: transparent;
+  }
+}
+
+.app-toast {
+  width: 494px;
+  min-height: 81px;
+  padding: 16px 16px 16px 8px;
+  border-radius: 8px;
+  display: flex;
+  position: relative;
+  background-color: #fff;
+  @media only screen and (max-width: map-get($breakpoints, "sm")) {
+    width: auto;
+  }
+  &__bar {
+    height: 100%;
+    width: 4px;
+    display: flex;
+    border-radius: 4px;
+    &.success { background-color: $success; }
+    &.error { background-color: $error; }
+    &.info { background-color: $info; }
+  }
+  &__main-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 16px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      @include bg;
+      width: 24px;
+      height: 24px;
+      display: flex;
+    }
+    &.error {
+      background-color: $error;
+      img { background-image: url('/assets/img/icons/close-x-circle.svg'); }
+    }
+    &.success {
+      background-color: $success;
+    }
+    &.info {
+      background-color: $info;
+    }
+  }
+  &__header {
+    margin-bottom: 4px;
+    font-weight: bold;
+    line-height: 20px;
+    color: #111111;
+  }
+  &__text {
+    font-size: 12px;
+    line-height: 18px;
+    color: #A4A5A8;
+  }
+  &__close {
+    @include bg;
+    background-image: url('/assets/img/icons/close-x.svg');
+    position: absolute; right: 16px; top: 28.5px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    cursor: pointer;
+    &:hover {
+      opacity: .5;
+    }
+  }
+}

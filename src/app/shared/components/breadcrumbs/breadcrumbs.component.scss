@@ -1,0 +1,33 @@
+@import 'mixins/_all';
+
+$breadcrumb-text-color: #A4A5A8;
+
+.breadcrumbs {
+  display: flex;
+  padding: 0 15px;
+  margin-bottom: 32px;
+  font-size: 14px;
+  font-weight: 600;
+  &__back-link {
+    display: flex;
+    color: $breadcrumb-text-color;
+    cursor: pointer;
+    &:hover { color: #fff; }
+  }
+  &__back-icon {
+    @include bg;
+    background-image: url('/assets/img/icons/arrow-left-white.svg');
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+    display: flex;
+  }
+  &__current-link {
+    color: #fff;
+    cursor: default;
+  }
+  &__divider {
+    margin: 0 4px;
+    color: $breadcrumb-text-color;
+  }
+}

@@ -1,0 +1,260 @@
+@import '~bootstrap-4-grid/scss/grid';
+@import 'mixins/bg';
+
+$bg-color: #30333E;
+$bg-color-secondary: #3C3F4A;
+$bg-color-accent: #3948D9;
+$text-color: #A4A5A8;
+$scroll-track-bg: #484848;
+
+:host {
+  width: 100%;
+}
+
+.mb-px-32 {
+  margin-bottom: 32px;
+}
+
+.title {
+  margin-bottom: 24px;
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.profile-ticket {
+  @include bg;
+  background-image: url('/assets/img/marketplace-bg.svg');
+  width: 100%;
+  min-height: 100vh;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  @media only screen and (min-width: map-get($grid-breakpoints, "md")) { flex-direction: row; padding: 32px; }
+  // TODO: create component without margins and paddings
+  &::ng-deep {
+    .breadcrumbs {
+      margin: 0 0 16px 0;
+      padding: 0;
+      @media only screen and (min-width: map-get($grid-breakpoints, "md")) { margin: 0 0 32px 0; }
+    }
+  }
+  &__left {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    @media only screen and (min-width: map-get($grid-breakpoints, "md")) { width: calc(100%/3); margin-right: 32px; }
+    @media only screen and (min-width: map-get($grid-breakpoints, "lg")) { margin-right: 48px; }
+  }
+  &__right {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    @media only screen and (min-width: map-get($grid-breakpoints, "md")) { width: calc(100%/3*2); }
+  }
+  &__title {
+    font-size: 64px;
+    line-height: 74px;
+    font-family: 'Anton';
+    font-weight: normal;
+    color: #fff;
+  }
+  &__app-link {
+    color: #4777F6;
+    cursor: pointer;
+    &:hover { opacity: .7; }
+  }
+}
+
+.warn-text {
+  color: #4777F6;
+  margin-bottom: 16px;
+}
+
+.ticket-owner {
+  min-height: 280px;
+  width: 100%;
+  padding: 40px;
+  border-radius: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: $bg-color;
+  &__person {
+    line-height: 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: $text-color;
+    @media only screen and (min-width: map-get($grid-breakpoints, "sm")) { flex-direction: row; }
+  }
+  &__name {
+    font-size: 14px;
+    display: inline-flex;
+    color: #fff;
+    @media only screen and (min-width: map-get($grid-breakpoints, "sm")) { font-size: 16px; margin-left: 8px; }
+  }
+  &__delimeter {
+    height: 10px;
+    width: 1.5px;
+    margin: 0 32px;
+    display: flex;
+    background-color: transparent;
+    @media only screen and (min-width: map-get($grid-breakpoints, "xl")) { height: 32px; background-color: #6F6B7E; }
+  }
+  &__content {
+    width: 100%;
+    padding: 40px;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $bg-color-secondary;
+    @media only screen and (min-width: map-get($grid-breakpoints, "sm")) { align-items: flex-start; }
+    @media only screen and (min-width: map-get($grid-breakpoints, "xl")) { flex-direction: row; align-items: center; justify-content: flex-start; }
+  }
+  &__avatar {
+    min-width: 40px;
+    height: 40px;
+    margin: 0 0 10px 0;
+    border-radius: 8px;
+    display: flex;
+    background: linear-gradient(0deg, #3948D9, #3948D9);
+    filter: drop-shadow(0px 100px 81px rgba(0, 0, 0, 0.22)) drop-shadow(0px 22.3363px 18.0924px rgba(0, 0, 0, 0.131144)) drop-shadow(0px 6.6501px 5.38658px rgba(0, 0, 0, 0.0888564));
+    &--creator { background: linear-gradient(0deg, #28BC8C, #28BC8C); }
+    @media only screen and (min-width: map-get($grid-breakpoints, "sm")) { margin: 0 16px 0 0; }
+  }
+}
+
+.qr {
+  min-height: 480px;
+  width: 100%;
+  padding: 32px 40px;
+  border-radius: 32px;
+  display: flex;
+  flex-direction: column;
+  background-color: $bg-color;
+  &__code {
+    width: 228px;
+    height: 228px;
+    margin-top: 32px;
+    display: flex;
+    position: relative;
+    background-color: #fff;
+    img { width: 100%; height: 100%; }
+  }
+  &__countdown {
+    position: absolute; top: -20px; right: 0;
+    color: #fff;
+    font-size: 14px;
+    line-height: 17px;
+    &--red { color: red; }
+    @media only screen and (min-width: map-get($grid-breakpoints, "sm")) { right: -70px; bottom: 0; top: auto; }
+  }
+}
+
+.vip-map {
+  margin-bottom: 32px;
+}
+
+.ticket-desc {
+  width: 100%;
+  height: 320px;
+  padding: 42px 0 0;
+  border-radius: 32px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  overflow: hidden;
+  background-color: $bg-color;
+  &__tabs {
+    width: 100%;
+    padding: 0 32px;
+  }
+  &__header {
+    width: 100%;
+    margin: 26px 0 16px;
+    padding: 0 32px;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 28px;
+    text-align: start;
+  }
+  &__text-wrap {
+    width: 100%;
+    padding-right: 10px;
+    display: flex;
+    flex-grow: 1;
+    margin-bottom: 32px;
+  }
+  &__text {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 32px;
+    position: relative;
+    overflow: auto;
+  }
+  &__text-scrollable {
+    position: absolute; top: 0;
+    max-width: 100%;
+    padding: 0 10px 0 32px;
+    font-size: 14px;
+    line-height: 24px;
+    display: flex;
+    flex-grow: 1;
+  }
+  &__list-wrap {
+    width: 100%;
+    padding: 32px;
+  }
+  &__main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    position: relative;
+    &:after {
+      position: absolute; bottom: 0;
+      width: 100%;
+      height: 80px;
+      display: flex;
+      background: linear-gradient(180deg, rgba(48, 51, 62, 0) 0%, #30333E 100%);
+      content: '';
+    }
+  }
+  &__list {
+    width: 100%;
+    border: 1px solid #434F5D;
+    border-radius: 16px;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+    color: #fff;
+    li {
+      line-height: 55px;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 16px;
+      &:not(:first-child) { border-top: 1px solid #434F5D; }
+    }
+  }
+  ::-webkit-scrollbar {
+    margin-left: 12px;
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: $scroll-track-bg;
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #5EFCE8 0%, #736EFE 100%);
+    box-shadow: 0px 100px 80px rgba(0, 0, 0, 0.2), 0px 30.1471px 24.1177px rgba(0, 0, 0, 0.130318), 0px 12.5216px 10.0172px rgba(0, 0, 0, 0.1), 0px 4.5288px 3.62304px rgba(0, 0, 0, 0.0696822);
+    border-radius: 8px;
+  }
+}

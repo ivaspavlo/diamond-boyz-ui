@@ -1,0 +1,15 @@
+<div *ngIf="selectedItem" (clickOutside)="onHideList()" class="currency">
+  <ul class="currency__list">
+    <li (click)="onToggleList()" class="currency-item currency-item__selected">
+      <img [src]="selectedItem.img" alt="Currency Image">
+      <p class="currency-item__currency">{{ selectedItem.currency }}</p>
+      <i *ngIf="items.length > 1" class="currency-item__arrow" [ngClass]="{'currency-item__arrow--active': showList}"></i>
+    </li>
+    <ng-container *ngIf="showList">
+      <li *ngFor="let item of listItems" (click)="onSelect(item)" class="currency-item">
+        <img [src]="item.img" alt="Currency Image" class="currency-item__img">
+        <p class="currency-item__currency">{{ item.currency }}</p>
+      </li>
+    </ng-container>
+  </ul>
+</div>

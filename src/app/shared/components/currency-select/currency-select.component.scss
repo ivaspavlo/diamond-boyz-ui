@@ -1,0 +1,48 @@
+@import '../../../../assets/styles/mixins/arrow';
+
+.currency {
+  width: 100%;
+  min-width: 115px;
+  border-radius: 12px;
+  position: relative;
+  &__list {
+    position: absolute; top: 0; left: 0;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: #262627;
+  }
+}
+
+.currency-item {
+  width: 100%;
+  height: 56px;
+  padding: 16px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  &__img {
+    width: 24px;
+    height: 24px;
+  }
+  &__currency {
+    padding-left: 4px;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #fff;
+  }
+  &__selected {
+    background: linear-gradient(135deg, #5EFCE8 0%, #736EFE 100%);
+  }
+  &__arrow {
+    @include arrow('down', 'primary');
+    position: absolute; right: 16px;
+    &--active {
+      @include arrow('up', 'primary');
+    }
+  }
+}

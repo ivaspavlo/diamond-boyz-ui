@@ -1,0 +1,13 @@
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M10 3V1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M14 10H11C10.448 10 10 9.552 10 9V7" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M2 10H1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M13 16H11C10.448 16 10 16.448 10 17V19" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M10 13H16" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M19 13V18C19 18.552 18.552 19 18 19H13" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M4 3.98914C3.997 3.98914 3.995 3.99114 3.995 3.99414C3.995 3.99714 3.997 3.99914 4 3.99914C4.003 3.99914 4.005 3.99714 4.005 3.99414C4.005 3.99114 4.003 3.98914 4 3.98914" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.9951 3.995C15.9921 3.995 15.9901 3.997 15.9901 4C15.9901 4.003 15.9921 4.005 15.9951 4.005C15.9981 4.005 16.0001 4.003 16.0001 4C16.0001 3.997 15.9981 3.995 15.9951 3.995" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16.9951 9.995C16.9921 9.995 16.9901 9.997 16.9901 10C16.9901 10.003 16.9921 10.005 16.9951 10.005C16.9981 10.005 17.0001 10.003 17.0001 10C17.0001 9.997 16.9981 9.995 16.9951 9.995" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.9951 15.995C15.9921 15.995 15.9901 15.997 15.9901 16C15.9901 16.003 15.9921 16.005 15.9951 16.005C15.9981 16.005 16.0001 16.003 16.0001 16C16.0001 15.997 15.9981 15.995 15.9951 15.995" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M4.00488 15.995C4.00188 15.995 3.99988 15.997 3.99988 16C3.99988 16.003 4.00188 16.005 4.00488 16.005C4.00788 16.005 4.00988 16.003 4.00988 16C4.00988 15.997 4.00788 15.995 4.00488 15.995" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

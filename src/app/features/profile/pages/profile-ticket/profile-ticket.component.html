@@ -1,0 +1,158 @@
+<div class="profile-ticket">
+  <ng-container *ngIf="nft$ | async as nft">
+    <div class="profile-ticket__left">
+
+      <app-breadcrumbs
+        [routerLinks]="['/profile']"
+        [title]="nft.attrs.title"
+        parentTitle="Profile"
+      ></app-breadcrumbs>
+
+      <div class="d-flex d-md-none">
+        <ng-container *ngTemplateOutlet="title; context: { $implicit: nft.attrs.title }"></ng-container>
+      </div>
+
+      <app-card-image [src]="nft.thumbnail_desktop" [label]="nft.zone_label" class="mb-px-32"></app-card-image>
+
+      <div class="ticket-desc mb-px-32">
+
+        <div class="ticket-desc__tabs">
+          <app-button-tabs (tabClick)="currentButton = $event" [tabs]="descButtons"></app-button-tabs>
+        </div>
+
+        <ng-container [ngSwitch]="currentButton">
+
+          <ng-container *ngSwitchCase="descButtons[0]">
+            <div *ngIf="(event$ | async) as event" class="ticket-desc__main">
+              <header class="ticket-desc__header">
+                <span>{{ event.title }}</span>
+              </header>
+              <div class="ticket-desc__text-wrap">
+                <div class="ticket-desc__text">
+                  <p class="ticket-desc__text-scrollable">{{ event.description }}</p>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+
+          <div *ngSwitchCase="descButtons[1]" class="ticket-desc__list-wrap">
+            <ul class="ticket-desc__list">
+              <li>
+                <span>Contract Address:</span>
+                <app-copy-to-clipboard
+                  [walletAddress]="NFT_CONTRACT_ADDRESS"
+                ></app-copy-to-clipboard>
+              </li>
+              <li>
+                <span>Token ID:</span>
+                <span>{{ nft.token_id }}</span>
+              </li>
+              <li>
+                <span>Token Standard:</span>
+                <span>ERC-721</span>
+              </li>
+            </ul>
+          </div>
+
+        </ng-container>
+
+      </div>
+    </div>
+
+    <div class="profile-ticket__right">
+
+      <div class="d-none d-md-flex">
+        <ng-container *ngTemplateOutlet="title; context: { $implicit: nft.attrs.title }"></ng-container>
+      </div>
+
+      <div class="ticket-owner mb-px-32">
+        <div class="ticket-owner__content mb-px-32" *ngIf="user$ | async as user">
+          <div class="ticket-owner__person">
+            <figure class="ticket-owner__avatar">
+              <svg width="100%" height="100%" [data-jdenticon-value]="user.wallet_address"></svg>
+            </figure>
+            <span>Owned by:</span>
+            <span class="ticket-owner__name">You</span>
+          </div>
+          <i class="ticket-owner__delimeter"></i>
+
+          <div class="ticket-owner__person">
+            <figure class="ticket-owner__avatar ticket-owner__avatar--creator">
+              <svg width="100%" height="100%" [data-jdenticon-value]="nft.contract_address"></svg>
+            </figure>
+            <span>Created:</span>
+            <span class="ticket-owner__name">
+              <app-copy-to-clipboard
+                [walletAddress]="nft.contract_address"
+              ></app-copy-to-clipboard>
+            </span>
+          </div>
+        </div>
+
+        <ng-container *ngIf="tab === 'tickets'">
+          <button *ngIf="nft.status !== NFT_STATUS.VALIDATED" type="button" class="btn ticket-owner__btn" [routerLink]="['.', 'sell']">Sell</button>
+        </ng-container>
+
+        <ng-container *ngIf="tab === 'sale' && nft.marketplace !== null">
+          <div *ngIf="isProcessing$ | async" class="warn-text text-center">
+            Please wait while we’re processing the transaction.<br>
+            This may take up to a minute.
+          </div>
+
+          <button
+            type="button"
+            class="btn outline"
+            [disabled]="isProcessing$ | async"
+            (click)="cancelListing()"
+          >
+            <ng-container *ngIf="isProcessing$ | async else btnText">Processing...</ng-container>
+            <ng-template #btnText>Cancel listing</ng-template>
+          </button>
+        </ng-container>
+
+        <router-outlet></router-outlet>
+      </div>
+
+      <ng-container *ngIf="tab === 'tickets' && (ticketQr$ | async) as qrImg">
+        <div class="qr mb-px-32" *ngIf="nft.object_type === NFT_OBJECT_TYPE.TICKET">
+
+          <h4 class="title">QR code</h4>
+
+          <!-- TODO: hide until mobile app released -->
+          <!-- <app-warn title="RECOMMENDED">
+            <span>For more convenient use, you can <a href="#" class="profile-ticket__app-link">download</a> a mobile application to enter the Show. This way, you will always have your tickets with you. Present your QR code to enter the show.</span>
+          </app-warn> -->
+
+          <div class="w-100 d-flex flex-grow-1 align-items-center justify-content-center">
+            <div class="qr__code">
+              <figure class="w-100">
+                <img [src]="qrImg.qr" class="">
+              </figure>
+              <p class="qr__countdown" [ngClass]="{ 'qr__countdown--red': isRunningOut$ | async }">
+                <span>{{ countDown$ | async }}</span>
+                <span class="ml-1">sec</span>
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </ng-container>
+
+      <app-vip-map
+        *ngIf="nft.object_type === NFT_OBJECT_TYPE.TICKET && nft.attrs?.vip_general === 'VIP'"
+        class="vip-map"
+      ></app-vip-map>
+
+      <app-event-info
+        *ngIf="nft.object_type === NFT_OBJECT_TYPE.TICKET"
+        [event]="event$ | async"
+      ></app-event-info>
+    </div>
+  </ng-container>
+</div>
+
+<app-footer></app-footer>
+
+<ng-template #title let-name>
+  <h2 class="profile-ticket__title mb-px-32">{{ name }}</h2>
+</ng-template>

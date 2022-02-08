@@ -1,0 +1,63 @@
+@import "~bootstrap-4-grid/scss/grid";
+
+.auction-details {
+  margin-bottom: 32px;
+
+  h6 {
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    color: #6F6B7E;
+    margin-bottom: 10px;
+  }
+
+  .subtitle {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    @media screen and (max-width: map-get($grid-breakpoints, 'xl')) { flex-direction: column; align-items: flex-start; }
+  }
+
+  h2 {
+    margin: 10px 0;
+    font-size: 28px;
+    line-height: 32px;
+    font-weight: bold;
+    background: -webkit-linear-gradient(#5EFCE8, #736EFE);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    @media screen and (min-width: map-get($grid-breakpoints, 'sm')) { font-size: 64px; line-height: 50px; margin: 0; }
+  }
+
+  h4 {
+    float: right;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 22px;
+    color: #6F6B7E;
+  }
+
+  button {
+    width:  240px;
+    height: 48px;
+    border: 0;
+    background: #4777F6;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #FFFFFF;
+    cursor: pointer;
+    margin-top: 24px  ;
+  }
+
+  &__offers {
+    margin-bottom: 32px;
+    @media screen and (min-width: map-get($grid-breakpoints, 'lg')) { margin-bottom: 0; }
+  }
+
+  &__offers-table {
+    overflow: auto;
+  }
+
+}

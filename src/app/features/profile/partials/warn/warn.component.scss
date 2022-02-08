@@ -1,0 +1,63 @@
+@import "~bootstrap-4-grid/scss/grid";
+@import "mixins/bg";
+
+.warn {
+  width: 100%;
+  max-width: 700px;
+  padding: 16px;
+  border-radius: 16px;
+  position: relative;
+  background-color: #494C59;
+  display: flex;
+  flex-direction: column;
+  @media only screen and (min-width: map-get($grid-breakpoints, "md")) { flex-direction: row; }
+  &__icon {
+    min-width: 48px;
+    height: 48px;
+    margin: 0 0 16px 0;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FD9706;
+    @media only screen and (min-width: map-get($grid-breakpoints, "md")) { margin: 0 16px 0 0; }
+    &:before {
+      @include bg;
+      background-image: url('/assets/img/icons/warn-triangle.svg');
+      width: 24px;
+      height: 24px;
+      display: flex;
+      content: '';
+    }
+  }
+  &__header {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 8px;
+    text-align: center;
+    color: #fff;
+    @media only screen and (min-width: map-get($grid-breakpoints, "md")) { text-align: start; }
+  }
+  &__text {
+    font-size: 12px;
+    line-height: 22px;
+    color: #fff;
+  }
+  &__close {
+    position: absolute; top: 16px; right: 16px;
+    height: 24px;
+    width: 24px;
+    display: flex;
+    cursor: pointer;
+    &:before {
+      @include bg;
+      background-image: url('/assets/img/icons/close-x-white.svg');
+      width: 24px;
+      height: 24px;
+      display: flex;
+      content: '';
+    }
+    &:hover { opacity: .7; }
+  }
+}

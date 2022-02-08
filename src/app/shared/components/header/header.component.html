@@ -1,0 +1,45 @@
+<section class="app-header">
+  <a routerLink="/" class="logo">
+    <img class="logo__img" src="/assets/img/logo.png" alt="Logo">
+    <p class="logo__title">Diamond Swap</p>
+  </a>
+
+  <!--<div class="header-search">
+    <input type="text" class="header-search__input" placeholder="Search items, collections and accounts">
+    <i class="header-search__icon"></i>
+  </div>-->
+
+  <div class="header-controls">
+    <a routerLink="/events" class="header-button" routerLinkActive="header-button--active">Tickets</a>
+    <a routerLink="/marketplace" class="header-button" routerLinkActive="header-button--active">Marketplace</a>
+    <a href="https://dbzcoin.com/" target="_blank" rel="noopener noreferrer" class="header-button">DBZ Coin</a>
+
+    <div (click)="onShowMenu($event)" (clickOutside)="onHideMenu($event)" class="wallet" *ngIf="user$ | async as user else loginBtn">
+      <figure class="wallet__avatar">
+        <svg width="100%" height="100%" [data-jdenticon-value]="user.wallet_address"></svg>
+      </figure>
+      <div class="wallet__data">
+        <p class="wallet__amount">{{ user.wallet_address | ellipsis:'6:6' }}</p>
+      </div>
+      <div *ngIf="userMenuVisible" class="user-menu">
+        <i class="triangle"></i>
+        <ul class="user-menu__wrap">
+          <li *ngFor="let item of userMenuItems" class="user-menu__item">
+            <a class="user-menu__link" (click)="onClickMenuItem($event, item.link)">
+              <span>{{ item.name }}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<ng-template #loginBtn>
+  <a routerLink="/auth" class="wallet">
+    <img src="/assets/img/icons/metamask-header-icon.svg" alt="Metamask Шcon" class="wallet__avatar">
+    <div class="wallet__data">
+      <div class="wallet__currency">Connect MetaMask</div>
+    </div>
+  </a>
+</ng-template>

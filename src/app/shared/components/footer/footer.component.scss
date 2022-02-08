@@ -1,0 +1,95 @@
+@import 'mixins/_all';
+
+.app-footer {
+  width: 100%;
+  min-height: 420px;
+  background-color: #202636;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__wrap {
+    width: 100%;
+    max-width: 1560px;
+    padding: 64px 32px 82px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  &__logo {
+    display: flex;
+    align-items: center;
+    min-width: 180px;
+    @media only screen and (max-width: map-get($breakpoints, "md")) {
+      justify-content: center;
+    }
+  }
+  &__logo-img {
+    height: 48px;
+    width: 48px;
+  }
+  &__logo-title {
+    margin-left: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    display: flex;
+  }
+  &__bottom {
+    width: 100%;
+    background-color: #333C59;
+  }
+  &__bottom-text {
+    width: 100%;
+    padding: 13px;
+    font-size: 12px;
+    text-align: center;
+    color: #BEBEC2;
+  }
+  &__main {
+    width: 100%;
+    max-width: 480px;
+  }
+  &__menu {
+    display: flex;
+    flex-grow: 1;
+    @media only screen and (max-width: map-get($breakpoints, "sm")) {
+      flex-direction: column;
+      align-items: center;
+    }
+    @media only screen and (max-width: map-get($breakpoints, "md")) {
+      justify-content: center;
+      margin-top: 30px;
+    }
+  }
+  &__first-text {
+    margin: 24px 0 27px;
+    color: #fff;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+  }
+  &__menu-col {
+    width: 100%;
+    min-width: 160px;
+    //max-width: 180px;
+    display: flex;
+    flex-direction: column;
+  }
+  &__menu-header {
+    font-weight: 700;
+    font-size: 20px;
+    color: #DFDFE1;
+    margin-top: 24px;
+  }
+  &__menu-link {
+    margin-top: 16px;
+    color: #6F6B7E;
+    a {
+      line-height: 20px;
+      color: #BEBEC2;
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+<div class="card auction-details">
+  <h6>Current price</h6>
+  <div class="subtitle">
+    <h2>DBZ: {{ticket.price}}</h2>
+    <h4 *ngIf="ticket.price_usd">$ {{ticket.price_usd}}</h4>
+  </div>
+
+  <ng-container *ngIf="ticket.state !== TicketStatus.BOUGHT">
+    <app-auction-timer
+      [startDate]="ticket.created_date"
+      [endDate]="ticket.finished_sales_date"
+    ></app-auction-timer>
+
+    <div class="text-center">
+      <button type="button" [disabled]="ticket.token_id === null" (click)="buyNow()">Buy now</button>
+    </div>
+  </ng-container>
+</div>
+
+<app-vip-map *ngIf="ticket.zone_id === 2"></app-vip-map>

@@ -1,0 +1,194 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '~@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$ap-wallet-primary: mat.define-palette(mat.$indigo-palette);
+$ap-wallet-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$ap-wallet-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$ap-wallet-theme: mat.define-light-theme((
+  color: (
+    primary: $ap-wallet-primary,
+    accent: $ap-wallet-accent,
+    warn: $ap-wallet-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($ap-wallet-theme);
+
+@import 'global.scss';
+@import 'mixins/_all';
+
+html, body { height: 100%; }
+
+.card {
+  background: #30333E;
+  padding: 40px;
+  border-radius: 32px;
+  @media screen and (max-width: map-get($grid-breakpoints, 'sm')) {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  h3 {
+    color: #fff;
+    font-size: 24px;
+    line-height: 29px;
+    margin-bottom: 24px;
+  }
+}
+
+.cdk-overlay-container {
+  background: rgba(17, 21, 32, 0.8);
+
+  .mat-dialog-container {
+    background-color: #30333E;
+    padding: 30px;
+    @media screen and (max-width: map-get($breakpoints, 'sm')) {
+      padding: 16px;
+      max-width: calc(100% - 32px);
+      margin-left: auto;
+      margin-right: auto;
+    }
+    border-radius: 32px;
+  }
+}
+
+.btn {
+  display: inline-block;
+  width: 240px;
+  line-height: 48px;
+  border: 0;
+  padding: 0 16px;
+  background: #4777F6;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  color: #fff;
+  text-transform: capitalize;
+  text-align: center;
+  transition: .3s;
+
+  &:not(:disabled):hover {
+    background-color: #6A93FF;
+  }
+
+  &:disabled {
+    background-color: #ADAAB8;
+    cursor: default;
+  }
+
+  &.outline {
+    background: transparent;
+    border: 2px solid #4777F6;
+    color: #4777F6;
+
+    &:not(:disabled):hover {
+      background: #4777F6;
+      color: #ffffff;
+    }
+
+    &:disabled {
+      border-color: #ADAAB8;
+      color: #ADAAB8;
+    }
+  }
+}
+
+.social-icon {
+  @include bg;
+  width: 24px;
+  height: 24px;
+  margin-right: 24px;
+  display: flex;
+  background-position: center;
+  background-repeat: no-repeat;
+  &.insta {
+    background-image: url('/assets/img/icons/insta.svg');
+  }
+  &.telegram {
+    background-image: url('/assets/img/icons/telegram.svg');
+  }
+  &.facebook {
+    background-image: url('/assets/img/icons/facebook.svg');
+  }
+  &.twitter {
+    background-image: url('/assets/img/icons/twitter.svg');
+  }
+
+  &:hover {
+    filter: brightness(0) invert(1);
+  }
+}
+
+.noItems {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 310px 0;
+  @media only screen and (max-width: map-get($breakpoints, "md")) {
+    padding: 80px 0;
+  }
+  img {
+    display: block;
+    margin: 0 0 30px;
+  }
+  b {
+    display: block;
+    font-weight: bold;
+    font-size: 42px;
+    line-height: 51px;
+    text-align: center;
+    color: $white;
+    margin: 0 0 16px;
+    max-width: 600px;
+    @media only screen and (max-width: map-get($breakpoints, "md")) {
+      font-size: 26px;
+    }
+  }
+  span {
+    color: $grey-11;
+    font-size: 12px;
+    line-height: 22px;
+  }
+}
+.load-more {
+  display: flex;
+  justify-content: center;
+  padding: 50px 0;
+  width: 100%;
+  &__button {
+    min-height: 40px;
+    padding: 0 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 0;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    cursor: pointer;
+    transition: .3s;
+    background-color: #4777F6;
+    box-shadow: 0px 100px 80px rgba(0, 0, 0, 0.2), 0px 30.1471px 24.1177px rgba(0, 0, 0, 0.130318), 0px 12.5216px 10.0172px rgba(0, 0, 0, 0.1), 0px 4.5288px 3.62304px rgba(0, 0, 0, 0.0696822);
+  }
+}

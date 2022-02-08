@@ -1,0 +1,43 @@
+<svg class="close" (click)="back()" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M18 6L6 18" stroke="#4777F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M6 6L18 18" stroke="#4777F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<h3>Selling a Ticket</h3>
+<p class="subheading">Will be on sale until you transfer this item or cancel it.</p>
+
+<div class="amount-control">
+  <label>Price</label>
+  <div class="amount-field">
+    <app-currency-select></app-currency-select>
+    <input type="text" [(ngModel)]="amount" placeholder="0" [maxLength]="18" numbersOnly>
+<!--    <div class="fiat">$ {{fiat$ | async}}</div>-->
+  </div>
+</div>
+
+<h5>Fees</h5>
+<p class="fees-description">Listing is free! At the time of the sale, the following fees will be deducted. <a href="#">Learn more</a>.</p>
+
+<div class="fees-block">
+  <ul>
+    <li>Diamond Swap: <span>0%</span></li>
+    <li>Total: <span>0%</span></li>
+    <li></li>
+  </ul>
+</div>
+
+<div *ngIf="isLoading$ | async" class="button-block processingMessage">
+  <p>Please wait while we’re processing the transaction.<br>
+    This may take up to a minute.</p>
+</div>
+
+<div class="button-block">
+  <button
+    class="btn"
+    [disabled]="!ticketId || !amount || amount <= 0 || (isLoading$ | async)"
+    (click)="postListing()"
+  >
+    <ng-container *ngIf="isLoading$ | async else btnText">Processing...</ng-container>
+    <ng-template #btnText>Post your listing</ng-template>
+  </button>
+</div>

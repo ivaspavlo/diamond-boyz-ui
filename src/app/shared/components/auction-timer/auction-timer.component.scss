@@ -1,0 +1,63 @@
+@import "../../../../../node_modules/bootstrap-4-grid/scss/grid";
+
+$card-bg-color: #3C3F4A;
+
+.timer {
+  background-color: $card-bg-color;
+  padding: 32px;
+  border-radius: 32px;
+
+  @media screen and (max-width: map-get($grid-breakpoints, 'sm')) { padding: 16px; border-radius: 16px; }
+
+  &__semicolumn {
+    margin-top: 4px;
+    line-height: 51px;
+    font-size: 32px;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  &-inner {
+    max-width: 310px;
+    margin: 0 auto;
+  }
+
+  &-item {
+    font-weight: bold;
+    font-size: 42px;
+    line-height: 51px;
+    color: #ffffff;
+    margin-top: 4px;
+
+    @media screen and (max-width: map-get($grid-breakpoints, 'sm')) {
+      font-size: 36px;
+    }
+
+    h6 {
+      margin-top: 4px;
+    }
+  }
+}
+
+.timeline {
+  height: 10px;
+  padding: 2px;
+  background: #484848;
+  border-radius: 8px;
+  margin-top: 16px;
+
+  .current-progress {
+    height: 100%;
+    background: linear-gradient(135deg, #5EFCE8 0%, #736EFE 100%);
+    border-radius: 8px;
+  }
+}
+
+h6 {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  color: #6F6B7E;
+  margin-bottom: 0;
+}

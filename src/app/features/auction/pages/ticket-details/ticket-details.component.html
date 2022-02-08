@@ -1,0 +1,78 @@
+<div *ngIf="ticket$ | async as ticket; else loading" class="ticket-details">
+
+  <app-breadcrumbs
+    [routerLinks]="['/events', eventId]"
+    [parentTitle]="'Tickets'"
+    [title]="ticket.title"
+  ></app-breadcrumbs>
+
+  <div class="container-fluid">
+    <div class="row flex-lg-row-reverse">
+      <div class="sale-block col-12 col-lg-8">
+
+        <h1>{{ticket.title}}</h1>
+
+        <ng-container [ngSwitch]="ticket.sell_type">
+          <app-auction-details
+            *ngSwitchCase="SellType.AUCTION"
+            [ticket]="ticket"
+          ></app-auction-details>
+
+          <app-buy-now-details
+            *ngSwitchCase="SellType.FIXED_PRICE"
+            [ticket]="ticket"
+          ></app-buy-now-details>
+        </ng-container>
+
+      </div>
+
+      <div class="details col-12 col-lg-4">
+        <ng-container *ngIf="ticket">
+          <img [img-preloader]="ticket.thumbnail_desktop_ticket_details" alt="Ticket Details">
+
+          <div class="card token-details" *ngIf="ticket.attrs.description">
+            <div class="tabs">
+              <span class="tabs__item" [class.current-tab]="view === TOKEN_DETAILS.DESCRIPTION" (click)="view = TOKEN_DETAILS.DESCRIPTION">Description</span>
+              <span class="tabs__item" [class.current-tab]="view === TOKEN_DETAILS.DETAILS" (click)="view = TOKEN_DETAILS.DETAILS">Details</span>
+            </div>
+
+            <ng-container *ngIf="view === TOKEN_DETAILS.DESCRIPTION">
+              <h3 *ngIf="ticket.attrs.name">{{ticket.attrs.name}}</h3>
+              {{ticket.attrs.description}}
+            </ng-container>
+
+            <ng-container *ngIf="view === TOKEN_DETAILS.DETAILS">
+              <ul>
+                <li>
+                  <span>Contract Address:</span>
+                  <app-copy-to-clipboard
+                    [walletAddress]="contractAddress"
+                  ></app-copy-to-clipboard>
+                </li>
+
+                <li>
+                  <span>Token ID:</span>
+                  <span>{{ticket.token_id}}</span>
+                </li>
+
+                <li>
+                  <span>Token Standard:</span>
+                  <span>ERC-721</span>
+                </li>
+              </ul>
+            </ng-container>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<app-footer></app-footer>
+
+<ng-template #loading>
+  <div class="spinner-container">
+    <app-spinner></app-spinner>
+  </div>
+</ng-template>

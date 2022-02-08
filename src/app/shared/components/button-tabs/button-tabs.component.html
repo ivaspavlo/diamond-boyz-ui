@@ -1,0 +1,6 @@
+<button
+  *ngFor="let tab of tabs"
+  (click)="onClick(tab)"
+  [ngClass]="{ 'tab--current': tab === currentTab }"
+  class="tab"
+>{{ tab.uiName }}</button>

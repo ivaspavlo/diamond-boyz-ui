@@ -1,0 +1,28 @@
+<section class="d-flex flex-column">
+
+  <app-header></app-header>
+
+  <div class="signin">
+    <div class="signin__content">
+      <figure class="signin__metamask-logo">
+        <img src="/assets/img/signin-metamask-logo.png" alt="Metamask Logo">
+      </figure>
+      <h3 class="signin__title">Sign in to your wallet</h3>
+      <h5 class="signin__subtitle">Please connect via Metamask, to be able to buy and sell tickets, merch and other NFTs.</h5>
+      <button (click)="onConnect()" class="signin__button" [disabled]="isProcessing$ | async">
+        <ng-container *ngIf="isProcessing$ | async else btnText">Connecting...</ng-container>
+        <ng-template #btnText>Connect</ng-template>
+      </button>
+      <div class="signin__warn">
+        <i class="signin__warn-icon"></i>
+        <div class="d-flex flex-column justify-content-center">
+          <p class="signin__warn-header">RECOMMENDED</p>
+          <p class="signin__warn-text">To enter through metamask. You should already have the Metamask plugin <a href="https://metamask.io/" class="signin__link">installed.</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+
+</section>

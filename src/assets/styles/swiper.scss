@@ -1,0 +1,11 @@
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+
+.swiper-pagination-bullet {
+  background-color: #D9E8FF;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #4777F6;
+}

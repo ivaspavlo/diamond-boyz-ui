@@ -1,0 +1,106 @@
+@import '~bootstrap-4-grid/scss/grid';
+@import 'mixins/_all';
+
+:host {
+  flex: 1;
+}
+
+.ticket-details {
+  // FIXME: via css
+  @include bg;
+  background-image: url('/assets/img/marketplace-bg.svg');
+  padding: 32px 0;
+  @media screen and (min-width: map-get($grid-breakpoints, 'sm')) { padding: 32px 17px; }
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.details {
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    box-shadow: 0px 100px 81px rgba(0, 0, 0, 0.22), 0px 22.3363px 18.0924px rgba(0, 0, 0, 0.131144), 0px 6.6501px 5.38658px rgba(0, 0, 0, 0.0888564);
+    border-radius: 40px;
+  }
+}
+
+h1 {
+  font-family: Anton, sans-serif;
+  font-weight: normal;
+  font-size: 64px;
+  line-height: 74px;
+  color: #ffffff;
+  margin-bottom: 32px;
+
+  @media screen and (max-width: map-get($grid-breakpoints, 'sm')) {
+    font-size: 48px;
+    line-height: 54px;
+    text-align: center;
+  }
+}
+
+.token-details {
+  margin-top: 32px;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 400;
+
+  h3 {
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 16px;
+  }
+
+  ul {
+    border: 1px solid #434F5D;
+    border-radius: 16px;
+
+    li {
+      line-height: 55px;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 16px;
+
+      &:not(:first-child) {
+        border-top: 1px solid #434F5D;
+      }
+    }
+  }
+}
+
+.tabs {
+  margin: 0 auto 24px;
+  max-width: 400px;
+  height: 44px;
+  padding: 2px;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  background: #3C3F4A;
+  border-radius: 4px;
+
+  &__item {
+    font-weight: 600;
+    line-height: 40px;
+    border-radius: 4px;
+    flex: 1;
+    text-align: center;
+    &:not(.current-tab) { cursor: pointer; }
+    &.current-tab { background-color: #4777F6; box-shadow: 0px 100px 80px rgba(0, 0, 0, 0.2), 0px 30.1471px 24.1177px rgba(0, 0, 0, 0.130318), 0px 12.5216px 10.0172px rgba(0, 0, 0, 0.1), 0px 4.5288px 3.62304px rgba(0, 0, 0, 0.0696822); }
+  }
+}
+
+.spinner-container {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

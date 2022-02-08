@@ -1,0 +1,60 @@
+@import 'mixins/all';
+
+.timer {
+  min-width: 110px;
+  @media only screen and (min-width: map-get($breakpoints, "lg")) { min-width: 200px; }
+  @media only screen and (min-width: map-get($breakpoints, "xxl")) { min-width: 210px; }
+}
+
+.timer-item {
+  width: 30px;
+  font-size: 22px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+  &--big {
+    width: 45px !important;
+    @media only screen and (min-width: map-get($breakpoints, "md")) { width: 65px !important; }
+  }
+  &--small {
+    width: 14px !important;
+    @media only screen and (min-width: map-get($breakpoints, "md")) { width: 25px !important; }
+    @media only screen and (min-width: map-get($breakpoints, "xxl")) { width: 30px !important; }
+  }
+  @media only screen and (min-width: map-get($breakpoints, "md")) { width: 50px; font-size: 32px; }
+  &__title {
+    font-size: 8px;
+    line-height: 15px;
+    font-style: normal;
+    font-weight: normal;
+    color: #6F6B7E;
+    @media only screen and (min-width: map-get($breakpoints, "md")) { font-size: 12px; }
+  }
+}
+
+.timer-delimeter {
+  display: flex;
+  color: white;
+  font-weight: 600;
+  margin: 0 3px;
+  line-height: 28px;
+  font-size: 20px;
+  @media only screen and (min-width: map-get($breakpoints, "md")) { margin: 0 5px; line-height: 42px; font-size: 28px; }
+}
+
+.timeline {
+  height: 8px;
+  padding: 2px;
+  background: #484848;
+  border-radius: 8px;
+  margin-top: 5px;
+  @media only screen and (min-width: map-get($breakpoints, "md")) { height: 10px; margin-top: 10px; }
+  @media only screen and (min-width: map-get($breakpoints, "xl")) { margin-top: 16px; }
+  .current-progress {
+    height: 100%;
+    background: linear-gradient(135deg, #5EFCE8 0%, #736EFE 100%);
+    border-radius: 8px;
+  }
+}

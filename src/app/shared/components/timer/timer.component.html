@@ -1,0 +1,28 @@
+<div class="timer" *ngIf="countdown$ | async as timer">
+  <div class="d-flex justify-content-between text-center">
+
+    <p [ngClass]="{ 'timer-item--big': timer.hours > 99, 'timer-item--small': timer.hours < 10 }" class="timer-item">
+      <span>{{ timer.hours }}</span>
+      <span class="timer-item__title">Hours</span>
+    </p>
+
+    <p class="timer-delimeter">:</p>
+
+    <p class="timer-item">
+      {{ timer.minutes | number:'2.0' }}
+      <span class="timer-item__title">Minutes</span>
+    </p>
+
+    <p class="timer-delimeter">:</p>
+
+    <p class="timer-item">
+      <span></span>{{ timer.seconds | number:'2.0' }}
+      <span class="timer-item__title">Seconds</span>
+    </p>
+
+  </div>
+
+  <div class="timeline">
+    <div class="current-progress" [style.width.%]="timer.timeline"></div>
+  </div>
+</div>

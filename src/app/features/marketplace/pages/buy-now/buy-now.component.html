@@ -1,0 +1,13 @@
+<app-marketplace-header></app-marketplace-header>
+
+<app-card *ngFor="let card of buyNowItems$ | async" [card]="card" class="app-marketplace-card"></app-card>
+
+<div  class="load-more">
+  <button *ngIf="(((totalElements$ | async) || 0) > ((buyNowItems$ | async)?.length || 0)) && (loadingMore$ | async) === false"
+          (click)="store.loadMore()"
+          class="load-more__button" >Load more</button>
+</div>
+
+<div *ngIf="loadingMore$ | async" class="spinner-container">
+  <app-spinner></app-spinner>
+</div>

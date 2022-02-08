@@ -1,0 +1,135 @@
+<section *ngIf="(event$ | async) as event" class="tickets">
+ <!-- TODO: Empty states -->
+  <div class="tickets__sidebar">
+    <div class="event">
+
+      <div class="d-flex">
+        <a routerLink="/events" class="event__breadcrumbs">
+          <i class="event__back-icon"></i>
+          <a class="event__back-link">Ticket</a>
+        </a>
+        <span class="event__current-link"> / Buy Tickets</span>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <figure class="event__image">
+<!--          <img [src]="event.thumbnail_mobile" loading="lazy" alt="Current Ticket Image">-->
+          <img src="/assets/img/mocks/ticket-event.png" [alt]="event.title">
+        </figure>
+      </div>
+
+      <div *ngIf="(event.start_date | eventDate:false) as eventDate" class="d-flex justify-content-center justify-content-md-between">
+        <div class="event__info-column">
+          <div class="event__info-block mb-3">
+            <p class="event__row-1">{{ eventDate.dayNum }} {{ eventDate.month | titlecase }}</p>
+            <p class="event__row-2">DATE</p>
+          </div>
+          <div class="event__info-block">
+            <p class="event__row-1">{{ event.place_address }}</p>
+            <p class="event__row-2">CITY</p>
+          </div>
+        </div>
+        <div class="event__info-column">
+          <div class="event__info-block mb-3">
+            <p class="event__row-1">{{ eventDate.time }}</p>
+            <p class="event__row-2">START</p>
+          </div>
+          <div class="event__info-block">
+            <p class="event__row-1">{{ event.place_title }}</p>
+            <p class="event__row-2">VENUE</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <i class="event__separate-line"></i>
+      </div>
+
+      <p class="event__name">{{ event.title }}</p>
+
+      <p class="event__para">{{ event.description }}</p>
+
+    </div>
+
+    <div class="tickets__sidebar-footer">
+      <button disabled class="event__merch-btn">Buy Merch</button>
+    </div>
+
+  </div>
+
+  <div class="tickets__content">
+
+    <div class="tabs">
+      <button class="tabs-btn" [class.current]="activeView === SellType.AUCTION" (click)="changeTab(SellType.AUCTION)">Vip Tickets</button>
+      <button class="tabs-btn" [class.current]="activeView === SellType.FIXED_PRICE" (click)="changeTab(SellType.FIXED_PRICE)">General Admission</button>
+    </div>
+
+    <p class="tickets-count" *ngIf="ticketsCount[activeView]">
+      <span class="tickets-count__num">{{ ticketsCount[activeView] }}</span>
+      <span>Tickets sold</span>
+    </p>
+
+    <ng-container *ngIf="!loading else loader">
+      <div class="d-flex flex-column" *ngIf="activeView === SellType.AUCTION">
+        <div class="d-flex flex-wrap justify-content-center justify-content-lg-start">
+          <ng-container *ngFor="let ticket of auction.results">
+            <app-ticket-card
+              [ticket]="ticket"
+              [daysLeft]="event.finished_sales_date | daysLeft"
+            ></app-ticket-card>
+          </ng-container>
+        </div>
+
+        <ng-container *ngIf="auction.results?.length === 0">
+          <div class="noItems">
+            <img src="/assets/img/zoom-gray.png" alt="">
+            <b>No more ticket available.<br>Please go to Market Place to purchase your tickets.</b>
+          </div>
+        </ng-container>
+
+        <div *ngIf="(auction.count || 0) > (auction.results?.length || 0) && !loadingMore" class="load-more" >
+          <button class="load-more__button" (click)="loadMore(SellType.AUCTION)">Load more</button>
+        </div>
+
+      </div>
+
+      <div class="d-flex flex-column" *ngIf="activeView === SellType.FIXED_PRICE">
+        <div class="d-flex flex-wrap justify-content-center justify-content-lg-start">
+          <ng-container *ngFor="let ticket of fixed_price.results">
+            <app-ticket-card
+              [ticket]="ticket"
+              [daysLeft]="event.finished_sales_date | daysLeft"
+            ></app-ticket-card>
+          </ng-container>
+        </div>
+
+        <ng-container *ngIf="fixed_price?.results?.length === 0">
+          <div class="noItems">
+            <img src="/assets/img/zoom-gray.png" alt="">
+            <b>No more ticket available.<br>Please go to Market Place to purchase your tickets.</b>
+          </div>
+        </ng-container>
+
+        <div *ngIf="(fixed_price.count || 0)  > (fixed_price.results?.length || 0) && !loadingMore" class="load-more" >
+          <button class="load-more__button" (click)="loadMore(SellType.FIXED_PRICE)">Load more</button>
+        </div>
+
+      </div>
+
+      <ng-container *ngTemplateOutlet="loadingTemplate"></ng-container>
+    </ng-container>
+  </div>
+
+</section>
+
+<ng-template #loader>
+  <div class="tickets__spinner">
+    <app-spinner></app-spinner>
+  </div>
+</ng-template>
+
+<ng-template #loadingTemplate>
+  <div *ngIf="loadingMore" class="spinner-container">
+    <app-spinner></app-spinner>
+  </div>
+</ng-template>

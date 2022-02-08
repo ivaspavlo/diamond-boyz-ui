@@ -1,0 +1,52 @@
+<div class="congrats">
+
+  <header class="w-100 d-flex flex-column">
+    <h4 class="congrats__title">
+      <p>🎉 🎉 🎉</p>
+      Congratulations !</h4>
+    <div class="congrats__subtitle" [ngSwitch]="data.sellType">
+      <ng-container *ngSwitchCase="SellType.AUCTION || MarketPlaceSaleType.AUCTION_SALE">
+        <p>You have placed your bet on this NTF.</p>
+        <p>In your profile, you can track the rates for this NFT token.</p>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="SellType.FIXED_PRICE || MarketPlaceSaleType.FIXED_PRICE_SALE">
+        <p>You have successfully bought the ticket.</p>
+      </ng-container>
+    </div>
+  </header>
+
+  <div class="d-flex justify-content-center">
+    <div class="congrats-content">
+      <div class="congrats-content__header">
+        <p class="w-50 pr-2 d-flex align-items-center">Status:</p>
+        <p class="w-50 pr-2 d-flex align-items-center">Transaction Hash:</p>
+      </div>
+      <div class="congrats-content__status">
+        <div class="w-50 pr-2 d-flex align-items-center">
+          <i class="congrats__checked"></i>
+          <!-- TODO: update status -->
+          <p>Complete</p>
+        </div>
+        <div class="w-50 pr-2 d-flex align-items-center">
+          <p class="txn-hash">
+            <app-copy-to-clipboard
+              [walletAddress]="data.txnHash"
+            ></app-copy-to-clipboard>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="d-flex justify-content-center">
+    <button (click)="onClick()" class="congrats__button">
+      <i class="congrats__arrow-right"></i>
+      <span [ngSwitch]="data.sellType">
+        <ng-container *ngSwitchCase="SellType.AUCTION">Back To NFT</ng-container>
+        <ng-container *ngSwitchCase="SellType.FIXED_PRICE">Back To Shopping</ng-container>
+      </span>
+    </button>
+  </footer>
+
+</div>

@@ -1,0 +1,82 @@
+<section class="app-main">
+
+  <div (click)="onScrollDown()" class="scroll-down">
+    <i class="scroll-down__icon"></i>
+    <span>Scroll down</span>
+  </div>
+
+  <div class="app-main__bg-1"></div>
+  <div class="app-main__bg-2"></div>
+  <div class="app-main__bg-3"></div>
+
+  <app-title
+    [endDate]="finished_sales_date | async"
+  ></app-title>
+
+  <div class="about">
+
+    <div class="about__left">
+      <div class="about__content">
+        <h3 class="about__title">What is Diamond Swap marketplace? And how to work with us?</h3>
+        <div class="about__points">
+          <div class="about__block active">
+            <span class="about__block-header">Buy & sell NFT's</span>
+            <span class="about__block-text">Diamond Swap is a place where users can buy and sell NFT's in a safe, secure, and fun way.</span>
+          </div>
+          <div class="about__block">
+            <span class="about__block-header">Concerts & Tickets</span>
+            <span class="about__block-text">Diamond Swap is the first marketplace that offers ticketing through the blockchain. Musicians and performers can now create NFT shows and sell tickets as NFT's creating a new way to engage with their fanbase.</span>
+          </div>
+          <div class="about__block">
+            <span class="about__block-header">Diamond Boyz Coin Payments</span>
+            <span class="about__block-text">DBZ is the premier currency used on Diamond Swap, allowing it to be swapped for collectibles, concert tickets and anything available on the marketplace.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about__right">
+      <figure>
+        <img src="/assets/img/about-main-image.png" alt="About Main Image">
+      </figure>
+    </div>
+
+  </div>
+
+  <div class="service">
+    <div class="service__content">
+
+      <header class="service__header">How To Buy and Sell NFT's</header>
+
+      <div class="d-flex flex-wrap justify-content-center">
+        <div *ngFor="let card of serviceCards; let last = last;" class="service__card">
+          <i class="service__card-icon"></i>
+          <p class="service__card-header">{{ card.name }}</p>
+          <p class="service__card-text">{{ card.content }}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="benefits">
+    <div class="benefits__left">
+      <figure>
+        <img src="/assets/img/benefits-bg.png" alt="About Main Image">
+      </figure>
+    </div>
+    <div class="benefits__right">
+      <div class="benefits__content">
+        <header class="benefits__header">Revolutionizing<br>The Music Industry.</header>
+        <p class="benefits__text benefits__text--with-margin">The Music Industry is a multi-billion dollar industry with a huge problem.</p>
+        <p class="benefits__text benefits__text--with-margin">The team at DBZ has figured out a solution to this problem by using NFT's (Non-Fungible Tokens) to verify the authenticity of these items, protecting businesses and consumers and saving them upwards of hundreds of millions each year.</p>
+        <p class="benefits__text">Diamond Swap NFT Marketplace</p>
+        <p class="benefits__text benefits__text--with-margin">Diamond Swap is a proprietary marketplace with solutions for businesses as well as small creators, artists, musicians, and content creators to use this blockchain technology to their benefit. Whether you are a small musician looking to sell tickets for a show, or a World Famous artist looking to go on tour, Diamond Swap has the capability to handle every need.</p>
+        <button routerLink="/events" class="benefits__button">Buy Tickets</button>
+      </div>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+
+</section>

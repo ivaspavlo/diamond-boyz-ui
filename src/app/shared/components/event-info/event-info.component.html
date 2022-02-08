@@ -1,0 +1,37 @@
+<div *ngIf="event" class="event mb-px-32">
+  <h4 class="title">Show information</h4>
+  <div class="d-flex flex-column flex-xl-row">
+    <div class="d-flex justify-content-center justify-content-xl-start w-30">
+      <figure class="event__image">
+        <img src="/assets/img/mocks/show-information.png" alt="Show Image">
+      </figure>
+    </div>
+    <div class="event__content">
+      <h3 class="event__content-title">{{event.title}}</h3>
+      <div class="event__data">
+        <p class="event__data-block">
+          <span>{{event.start_date | date:'d MMM'}}</span>
+          <span>DATE</span>
+        </p>
+        <i class="event__delimeter"></i>
+        <p class="event__data-block">
+          <span>{{event.start_date | date: 'h:ss aa' : 'UTC'}}</span>
+          <span>START</span>
+        </p>
+        <i class="event__delimeter"></i>
+        <p class="event__data-block">
+          <span>{{event.place_address}}</span>
+          <span>CITY</span>
+        </p>
+        <i class="event__delimeter"></i>
+        <p class="event__data-block">
+          <span>{{event.place_title}}</span>
+          <span>VENUE</span>
+        </p>
+      </div>
+      <p class="event__desc">
+        {{event.description}}
+      </p>
+    </div>
+  </div>
+</div>

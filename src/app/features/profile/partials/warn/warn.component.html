@@ -1,0 +1,12 @@
+<div *ngIf="showWarn" class="warn">
+  <div class="d-flex align-items-center justify-content-center">
+    <i class="warn__icon"></i>
+  </div>
+  <div class="d-flex flex-column">
+    <header class="warn__header">{{ title }}</header>
+    <p class="warn__text">
+      <ng-content></ng-content>
+    </p>
+  </div>
+  <i (click)="showWarn = false" class="warn__close"></i>
+</div>

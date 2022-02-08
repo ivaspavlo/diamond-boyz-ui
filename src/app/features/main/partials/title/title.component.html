@@ -1,0 +1,26 @@
+<div class="title">
+  <div class="title__container">
+
+    <figure class="title__cards">
+      <div class="title__timer">
+        <h3 class="title__event-name">Johnny Dang's Birthday Bash</h3>
+        <div class="d-flex flex-grow-0 justify-content-center">
+          <app-timer
+            *ngIf="endDate"
+            [endDate]="endDate"></app-timer>
+        </div>
+      </div>
+      <img src="/assets/img/main-cards.png" alt="Events Logo">
+    </figure>
+
+    <div class="title__slogan">
+      <figure class="main-title">
+        <img src="/assets/img/title-1.png" alt="Title 1">
+      </figure>
+      <div class="title__ctrls">
+        <button routerLink="/events/1" class="title__button title__button--buy-now">Buy Tickets</button>
+        <button routerLink="/marketplace/buynow" class="title__button title__button--nft">NFTs Marketplace</button>
+      </div>
+    </div>
+  </div>
+</div>

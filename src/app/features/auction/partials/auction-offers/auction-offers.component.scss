@@ -1,0 +1,40 @@
+.offers-table {
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  border-spacing: 0;
+  border: 1px solid #434F5D;
+  border-radius: 16px;
+  overflow: hidden;
+  &__header {
+    background: #262830;
+  }
+  &__header-cell {
+    font-size: 12px;
+    font-weight: 600;
+    height: 40px;
+    padding: 0 15px;
+    &:first-child {
+      border-right: 1px solid #434F5D;
+    }
+  }
+  &__data-cell {
+    height: 55px;
+    padding: 0 15px;
+    font-size: 14px;
+    border-top: 1px solid #434F5D;
+    &:first-child {
+      text-align: left;
+    }
+  }
+  &__empty {
+    padding: 90px 0 85px;
+    text-align: center;
+    background-color: #3C3F4A;
+    color: #A4A5A8;
+    font-size: 16px;
+    line-height: 26px;
+    img { height: 99px; width: 102px; }
+    figcaption { margin-top: 10px; }
+  }
+}

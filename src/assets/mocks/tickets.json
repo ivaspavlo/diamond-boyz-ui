@@ -1,0 +1,65 @@
+{
+  "results": [
+    {
+      "id": 1,
+      "sell_type": "by_now",
+      "zode_id": 1,
+      "zone_title": "VIP",
+      "zone_lable": "VIP",
+      "title": "Kendirck Lamar #1000",
+      "image_url": "/assets/img/ticket-card-1.png",
+      "price": 0.075,
+      "top_offer_price": 0.085
+    }, {
+      "id": 2,
+      "sell_type": "by_now",
+      "zode_id": 1,
+      "zone_title": "VIP",
+      "zone_lable": "VIP",
+      "title": "Kendirck Lamar #1000",
+      "image_url": "/assets/img/ticket-card-2.png",
+      "price": 0.075,
+      "top_offer_price": 0.085
+    }, {
+      "id": 3,
+      "sell_type": null,
+      "zode_id": 1,
+      "zone_title": "VIP",
+      "zone_lable": "VIP",
+      "title": "Kendirck Lamar #1000",
+      "image_url": "/assets/img/ticket-card-3.png",
+      "price": 0.075,
+      "top_offer_price": 0.085
+    }, {
+      "id": 4,
+      "sell_type": null,
+      "zode_id": 1,
+      "zone_title": "VIP",
+      "zone_lable": "VIP",
+      "title": "Kendirck Lamar #1000",
+      "image_url": "/assets/img/ticket-card-4.png",
+      "price": 0.075,
+      "top_offer_price": 0.085
+    }, {
+      "id": 5,
+      "sell_type": "by_now",
+      "zode_id": 1,
+      "zone_title": "VIP",
+      "zone_lable": "VIP",
+      "title": "Kendirck Lamar #1000",
+      "image_url": "/assets/img/ticket-card-5.png",
+      "price": 0.075,
+      "top_offer_price": 0.085
+    }, {
+      "id": 1,
+      "sell_type": "by_now",
+      "zode_id": 1,
+      "zone_title": "General Admission",
+      "zone_lable": null,
+      "title": "Kendirck Lamar #1000",
+      "image_url": "/assets/img/ticket-card-1.png",
+      "price": 0.075,
+      "top_offer_price": 0.085
+    }
+  ]
+}

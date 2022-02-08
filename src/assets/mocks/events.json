@@ -1,0 +1,15 @@
+{
+  "results": [
+    {
+      "id": 1,
+      "title": "KENDIRCK LAMAR",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Orci rhoncus sapien sit ridiculus feugiat egestas pretium mollis. Eget lacus dapibus tempor in tortor. Eleifend nunc dictumst diam vel faucibus rhoncus amet. Orci, tristique in diam habitasse placerat interdum. Ornare vestibulum egestas dictumst vitae ultrices fermentum dolor. Tristique duis adipiscing platea eu gravida massa. Vitae nunc, egestas euismod metus, pharetra pellentesque porttitor nisi faucibus.n",
+      "start_date": "2021-11-09 20:00:00.000000+00:00",
+      "place_id": 1,
+      "place_title": "Carnegie Hall",
+      "place_address": "NY",
+      "image_url": "/assets/img/ticket-bg.png",
+      "finished_sales_date": "2021-11-08 19:00:00.000000+00:00"
+    }
+  ]
+}
